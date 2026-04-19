@@ -11,5 +11,21 @@
   "selectAll":            { "message": "すべて選択" },
   "deselectAll":          { "message": "すべて解除" },
   "copySelected":         { "message": "$COUNT$ ページをコピー", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "タブが選択されていません" }
+  "noTabsSelected":       { "message": "タブが選択されていません" },
+
+  "optionsTitle":         { "message": "Markdownにエクスポート — 設定" },
+  "optionsSubtitle":      { "message": "特定のサイトからエクスポート前に削除するCSSセレクターを設定します。" },
+  "optionsFormHeading":   { "message": "ルールを追加 / 編集" },
+  "optionsRulesHeading":  { "message": "既存のルール" },
+  "optionsLabelHostname": { "message": "ホスト名（例: example.com）" },
+  "optionsLabelSelect":   { "message": "選択 — メインコンテンツのCSSセレクター（省略可）" },
+  "optionsLabelHide":     { "message": "非表示 — 削除するCSSセレクター（1行に1つ）" },
+  "optionsNoRules":       { "message": "ルールが定義されていません。" },
+  "optionsSaveRule":      { "message": "ルールを保存" },
+  "optionsUpdateRule":    { "message": "ルールを更新" },
+  "optionsEdit":          { "message": "編集" },
+  "optionsDelete":        { "message": "削除" },
+  "optionsCancel":        { "message": "キャンセル" },
+  "optionsErrorHostname": { "message": "無効なホスト名 — example.comのような単純なホスト名を入力してください" },
+  "optionsErrorSelector": { "message": "無効なCSSセレクター" }
 }

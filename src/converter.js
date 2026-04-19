@@ -15,7 +15,7 @@ td.addRule('fencedCodeBlock', {
   replacement: (_, node) => {
     const lang =
       node.firstChild.getAttribute('class')?.match(/language-(\S+)/)?.[1] ?? '';
-    return `\n\`\`\`${lang}\n${node.firstChild.textContent}\n\`\`\`\n`;
+    return `\n\`\`\`${lang}\n${node.firstChild.textContent.trimEnd()}\n\`\`\`\n`;
   },
 });
 

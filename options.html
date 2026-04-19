@@ -115,6 +115,16 @@
 
     .empty { color: #999; font-size: 13px; text-align: center; padding: 20px; }
 
+    .form-error {
+      color: #c5221f;
+      font-size: 12px;
+      margin: 0 0 10px;
+      padding: 6px 10px;
+      background: #fce8e6;
+      border: 1px solid #ea4335;
+      border-radius: 6px;
+    }
+
     @media (prefers-color-scheme: dark) {
       body { background: #1e1e1e; color: #e8e8e8; }
       p.subtitle { color: #aaa; }
@@ -128,34 +138,36 @@
       .rule-type.hide   { background: #3d1a1a; color: #f28b82; }
       .rule-row code { color: #aaa; }
       label { color: #aaa; }
+      .form-error { background: #3d1a1a; border-color: #ea4335; color: #f28b82; }
     }
   </style>
 </head>
 <body>
-  <h1>Export to Markdown — Settings</h1>
-  <p class="subtitle">Define CSS selectors to strip from specific sites before exporting.</p>
+  <h1 id="options-title"></h1>
+  <p id="options-subtitle" class="subtitle"></p>
 
-  <h2>Add / edit rule</h2>
+  <h2 id="options-form-heading"></h2>
   <div class="form-card">
     <div class="form-row">
-      <label for="input-hostname">Hostname (e.g. <code>leboncoin.fr</code>)</label>
+      <label id="options-label-hostname" for="input-hostname"></label>
       <input type="text" id="input-hostname" placeholder="example.com" spellcheck="false" />
     </div>
     <div class="form-row">
-      <label for="input-select">Select — CSS selector for the main content root (optional)</label>
+      <label id="options-label-select" for="input-select"></label>
       <input type="text" id="input-select" placeholder="[data-qa-id='adview-body']" spellcheck="false" />
     </div>
     <div class="form-row">
-      <label for="input-hide">Hide — CSS selectors to strip, one per line</label>
+      <label id="options-label-hide" for="input-hide"></label>
       <textarea id="input-hide" placeholder="[data-qa-id='adview-similar-ads']&#10;.sidebar"></textarea>
     </div>
+    <p id="form-error" class="form-error" hidden></p>
     <div class="form-actions">
-      <button class="primary" id="btn-save">Save rule</button>
-      <button id="btn-cancel" hidden>Cancel</button>
+      <button class="primary" id="btn-save"></button>
+      <button id="btn-cancel" hidden></button>
     </div>
   </div>
 
-  <h2>Existing rules</h2>
+  <h2 id="options-rules-heading"></h2>
   <div id="rules-list"></div>
 
   <script src="dist/options.js"></script>

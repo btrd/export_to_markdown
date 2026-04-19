@@ -31,35 +31,35 @@ function isRestricted(url) {
 async function fetchMarkdown(tabId) {
   await browser.scripting.executeScript({ target: { tabId }, files: ['dist/content.js'] });
   const response = await browser.tabs.sendMessage(tabId, { type: 'GET_MARKDOWN' });
-  return response.markdown;
+  return response?.markdown ?? '';
 }
 
 // ── Single-page mode ─────────────────────────────────────────────────────────
 
 const copyBtn = document.getElementById('copy');
-let resetTimer;
+const resetTimers = new WeakMap();
 
 // Applies a visual state (success/error) to a button and resets it after 2 s.
-function setBtn(btn, state, label) {
+function setBtn(btn, state, label, resetLabel) {
   btn.className = `action-btn${state ? ` ${state}` : ''}`;
   btn.textContent = label;
-  clearTimeout(resetTimer);
-  resetTimer = setTimeout(() => {
-    btn.className = 'action-btn';
-    btn.textContent = i18n(btn === copyBtn ? 'copyButton' : 'copySelected');
-  }, 2000);
+  clearTimeout(resetTimers.get(btn));
+  if (resetLabel !== undefined) {
+    resetTimers.set(btn, setTimeout(() => setBtn(btn, '', resetLabel), 2000));
+  }
 }
 
 copyBtn.addEventListener('click', async () => {
   copyBtn.textContent = i18n('copying');
   copyBtn.disabled = true;
   try {
-    const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
-    const markdown = await fetchMarkdown(tab.id);
+    const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+    if (!tabs.length) throw new Error('no active tab');
+    const markdown = await fetchMarkdown(tabs[0].id);
     await navigator.clipboard.writeText(markdown);
-    setBtn(copyBtn, 'success', i18n('copied'));
+    setBtn(copyBtn, 'success', i18n('copied'), i18n('copyButton'));
   } catch {
-    setBtn(copyBtn, 'error', i18n('copyError'));
+    setBtn(copyBtn, 'error', i18n('copyError'), i18n('copyButton'));
   } finally {
     copyBtn.disabled = false;
   }
@@ -157,9 +157,9 @@ copyMultiBtn.addEventListener('click', async () => {
     if (pages.length === 0) throw new Error('all tabs failed');
 
     await navigator.clipboard.writeText(pages.join('\n\n---\n\n'));
-    setBtn(copyMultiBtn, 'success', i18n('copied'));
+    setBtn(copyMultiBtn, 'success', i18n('copied'), i18n('copySelected', String(tabIds.length)));
   } catch {
-    setBtn(copyMultiBtn, 'error', i18n('copyError'));
+    setBtn(copyMultiBtn, 'error', i18n('copyError'), i18n('noTabsSelected'));
   } finally {
     copyMultiBtn.disabled = false;
   }

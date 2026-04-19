@@ -11,5 +11,21 @@
   "selectAll":            { "message": "Alle auswählen" },
   "deselectAll":          { "message": "Alle abwählen" },
   "copySelected":         { "message": "$COUNT$ Seite(n) kopieren", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Kein Tab ausgewählt" }
+  "noTabsSelected":       { "message": "Kein Tab ausgewählt" },
+
+  "optionsTitle":         { "message": "Als Markdown exportieren — Einstellungen" },
+  "optionsSubtitle":      { "message": "CSS-Selektoren definieren, um bestimmte Seiteninhalte vor dem Export zu entfernen." },
+  "optionsFormHeading":   { "message": "Regel hinzufügen / bearbeiten" },
+  "optionsRulesHeading":  { "message": "Vorhandene Regeln" },
+  "optionsLabelHostname": { "message": "Hostname (z. B. example.com)" },
+  "optionsLabelSelect":   { "message": "Auswählen — CSS-Selektor für den Hauptinhalt (optional)" },
+  "optionsLabelHide":     { "message": "Ausblenden — CSS-Selektoren zum Entfernen, einer pro Zeile" },
+  "optionsNoRules":       { "message": "Keine Regeln definiert." },
+  "optionsSaveRule":      { "message": "Regel speichern" },
+  "optionsUpdateRule":    { "message": "Regel aktualisieren" },
+  "optionsEdit":          { "message": "Bearbeiten" },
+  "optionsDelete":        { "message": "Löschen" },
+  "optionsCancel":        { "message": "Abbrechen" },
+  "optionsErrorHostname": { "message": "Ungültiger Hostname — verwenden Sie einen einfachen Hostnamen wie example.com" },
+  "optionsErrorSelector": { "message": "Ungültiger CSS-Selektor" }
 }

@@ -11,5 +11,21 @@
   "selectAll":            { "message": "Zaznacz wszystko" },
   "deselectAll":          { "message": "Odznacz wszystko" },
   "copySelected":         { "message": "Kopiuj $COUNT$ stronę/y", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Brak zaznaczonych kart" }
+  "noTabsSelected":       { "message": "Brak zaznaczonych kart" },
+
+  "optionsTitle":         { "message": "Eksportuj do Markdown — Ustawienia" },
+  "optionsSubtitle":      { "message": "Zdefiniuj selektory CSS, aby usunąć elementy z określonych stron przed eksportem." },
+  "optionsFormHeading":   { "message": "Dodaj / edytuj regułę" },
+  "optionsRulesHeading":  { "message": "Istniejące reguły" },
+  "optionsLabelHostname": { "message": "Nazwa hosta (np. example.com)" },
+  "optionsLabelSelect":   { "message": "Wybierz — selektor CSS dla głównej treści (opcjonalnie)" },
+  "optionsLabelHide":     { "message": "Ukryj — selektory CSS do usunięcia, jeden w każdej linii" },
+  "optionsNoRules":       { "message": "Brak zdefiniowanych reguł." },
+  "optionsSaveRule":      { "message": "Zapisz regułę" },
+  "optionsUpdateRule":    { "message": "Zaktualizuj regułę" },
+  "optionsEdit":          { "message": "Edytuj" },
+  "optionsDelete":        { "message": "Usuń" },
+  "optionsCancel":        { "message": "Anuluj" },
+  "optionsErrorHostname": { "message": "Nieprawidłowa nazwa hosta — użyj prostej nazwy, np. example.com" },
+  "optionsErrorSelector": { "message": "Nieprawidłowy selektor CSS" }
 }

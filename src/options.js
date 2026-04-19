@@ -1,9 +1,22 @@
+const i18n = (key) => browser.i18n.getMessage(key);
+
 const hostnameInput = document.getElementById('input-hostname');
 const selectInput   = document.getElementById('input-select');
 const hideInput     = document.getElementById('input-hide');
 const saveBtn       = document.getElementById('btn-save');
 const cancelBtn     = document.getElementById('btn-cancel');
 const rulesList     = document.getElementById('rules-list');
+const formError     = document.getElementById('form-error');
+
+// Populate static labels from the active locale.
+document.getElementById('options-title').textContent         = i18n('optionsTitle');
+document.getElementById('options-subtitle').textContent      = i18n('optionsSubtitle');
+document.getElementById('options-form-heading').textContent  = i18n('optionsFormHeading');
+document.getElementById('options-rules-heading').textContent = i18n('optionsRulesHeading');
+document.getElementById('options-label-hostname').textContent = i18n('optionsLabelHostname');
+document.getElementById('options-label-select').textContent  = i18n('optionsLabelSelect');
+document.getElementById('options-label-hide').textContent    = i18n('optionsLabelHide');
+cancelBtn.textContent = i18n('optionsCancel');
 
 let editingHostname = null;
 
@@ -14,6 +27,32 @@ async function getRules() {
 
 async function setRules(rules) {
   await browser.storage.sync.set({ rules });
+}
+
+function showError(msg) {
+  formError.textContent = msg;
+  formError.hidden = false;
+}
+
+function clearError() {
+  formError.hidden = true;
+  formError.textContent = '';
+}
+
+function isValidHostname(hostname) {
+  return hostname.length > 0
+    && !hostname.includes(' ')
+    && !hostname.includes('/')
+    && !hostname.includes(':');
+}
+
+function isValidSelector(selector) {
+  try {
+    document.createDocumentFragment().querySelector(selector);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function makeSelectorRow(type, value) {
@@ -35,7 +74,7 @@ function renderRules(rules) {
   if (entries.length === 0) {
     const empty = document.createElement('p');
     empty.className = 'empty';
-    empty.textContent = 'No rules defined.';
+    empty.textContent = i18n('optionsNoRules');
     rulesList.appendChild(empty);
     return;
   }
@@ -56,12 +95,12 @@ function renderRules(rules) {
 
     const editBtn = document.createElement('button');
     editBtn.className = 'btn-edit';
-    editBtn.textContent = 'Edit';
+    editBtn.textContent = i18n('optionsEdit');
     editBtn.addEventListener('click', () => startEdit(hostname, rule));
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'danger btn-delete';
-    deleteBtn.textContent = 'Delete';
+    deleteBtn.textContent = i18n('optionsDelete');
     deleteBtn.addEventListener('click', async () => {
       const updated = await getRules();
       delete updated[hostname];
@@ -87,7 +126,8 @@ function startEdit(hostname, rule) {
   selectInput.value = rule.select ?? '';
   hideInput.value = (rule.hide ?? []).join('\n');
   cancelBtn.hidden = false;
-  saveBtn.textContent = 'Update rule';
+  saveBtn.textContent = i18n('optionsUpdateRule');
+  clearError();
   hostnameInput.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -98,15 +138,37 @@ function resetForm() {
   selectInput.value = '';
   hideInput.value = '';
   cancelBtn.hidden = true;
-  saveBtn.textContent = 'Save rule';
+  saveBtn.textContent = i18n('optionsSaveRule');
+  clearError();
 }
 
 saveBtn.addEventListener('click', async () => {
+  clearError();
+
   const hostname = hostnameInput.value.trim().toLowerCase();
   const select   = selectInput.value.trim() || undefined;
   const hide     = hideInput.value.split('\n').map((s) => s.trim()).filter(Boolean);
 
   if (!hostname || (!select && hide.length === 0)) return;
+
+  if (!isValidHostname(hostname)) {
+    showError(i18n('optionsErrorHostname'));
+    hostnameInput.focus();
+    return;
+  }
+
+  if (select && !isValidSelector(select)) {
+    showError(i18n('optionsErrorSelector'));
+    selectInput.focus();
+    return;
+  }
+
+  const invalidHide = hide.find((s) => !isValidSelector(s));
+  if (invalidHide) {
+    showError(i18n('optionsErrorSelector'));
+    hideInput.focus();
+    return;
+  }
 
   const rules = await getRules();
 
@@ -132,3 +194,4 @@ saveBtn.addEventListener('click', async () => {
 cancelBtn.addEventListener('click', resetForm);
 
 getRules().then(renderRules);
+resetForm();

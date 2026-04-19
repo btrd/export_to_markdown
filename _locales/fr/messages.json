@@ -11,5 +11,21 @@
   "selectAll":            { "message": "Tout sélectionner" },
   "deselectAll":          { "message": "Tout désélectionner" },
   "copySelected":         { "message": "Copier $COUNT$ page(s)", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Aucun onglet sélectionné" }
+  "noTabsSelected":       { "message": "Aucun onglet sélectionné" },
+
+  "optionsTitle":         { "message": "Exporter en Markdown — Paramètres" },
+  "optionsSubtitle":      { "message": "Définissez des sélecteurs CSS pour filtrer certains sites avant l'export." },
+  "optionsFormHeading":   { "message": "Ajouter / modifier une règle" },
+  "optionsRulesHeading":  { "message": "Règles existantes" },
+  "optionsLabelHostname": { "message": "Nom d'hôte (ex. example.com)" },
+  "optionsLabelSelect":   { "message": "Sélectionner — sélecteur CSS pour le contenu principal (optionnel)" },
+  "optionsLabelHide":     { "message": "Masquer — sélecteurs CSS à supprimer, un par ligne" },
+  "optionsNoRules":       { "message": "Aucune règle définie." },
+  "optionsSaveRule":      { "message": "Enregistrer la règle" },
+  "optionsUpdateRule":    { "message": "Mettre à jour" },
+  "optionsEdit":          { "message": "Modifier" },
+  "optionsDelete":        { "message": "Supprimer" },
+  "optionsCancel":        { "message": "Annuler" },
+  "optionsErrorHostname": { "message": "Nom d'hôte invalide — utilisez un nom d'hôte simple comme example.com" },
+  "optionsErrorSelector": { "message": "Sélecteur CSS invalide" }
 }

@@ -11,5 +11,21 @@
   "selectAll":            { "message": "Selecionar tudo" },
   "deselectAll":          { "message": "Desmarcar tudo" },
   "copySelected":         { "message": "Copiar $COUNT$ página(s)", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Nenhum separador selecionado" }
+  "noTabsSelected":       { "message": "Nenhum separador selecionado" },
+
+  "optionsTitle":         { "message": "Exportar para Markdown — Definições" },
+  "optionsSubtitle":      { "message": "Defina seletores CSS para remover elementos de sites específicos antes de exportar." },
+  "optionsFormHeading":   { "message": "Adicionar / editar regra" },
+  "optionsRulesHeading":  { "message": "Regras existentes" },
+  "optionsLabelHostname": { "message": "Nome do anfitrião (ex. example.com)" },
+  "optionsLabelSelect":   { "message": "Selecionar — seletor CSS para o conteúdo principal (opcional)" },
+  "optionsLabelHide":     { "message": "Ocultar — seletores CSS para remover, um por linha" },
+  "optionsNoRules":       { "message": "Nenhuma regra definida." },
+  "optionsSaveRule":      { "message": "Guardar regra" },
+  "optionsUpdateRule":    { "message": "Atualizar regra" },
+  "optionsEdit":          { "message": "Editar" },
+  "optionsDelete":        { "message": "Eliminar" },
+  "optionsCancel":        { "message": "Cancelar" },
+  "optionsErrorHostname": { "message": "Nome do anfitrião inválido — use um nome simples como example.com" },
+  "optionsErrorSelector": { "message": "Seletor CSS inválido" }
 }

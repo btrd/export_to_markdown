@@ -11,5 +11,21 @@
   "selectAll":            { "message": "Tümünü seç" },
   "deselectAll":          { "message": "Tümünü kaldır" },
   "copySelected":         { "message": "$COUNT$ sayfa kopyala", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Sekme seçilmedi" }
+  "noTabsSelected":       { "message": "Sekme seçilmedi" },
+
+  "optionsTitle":         { "message": "Markdown'a Aktar — Ayarlar" },
+  "optionsSubtitle":      { "message": "Belirli sitelerden dışa aktarmadan önce kaldırılacak CSS seçicilerini tanımlayın." },
+  "optionsFormHeading":   { "message": "Kural ekle / düzenle" },
+  "optionsRulesHeading":  { "message": "Mevcut kurallar" },
+  "optionsLabelHostname": { "message": "Ana bilgisayar adı (örn. example.com)" },
+  "optionsLabelSelect":   { "message": "Seç — ana içerik için CSS seçici (isteğe bağlı)" },
+  "optionsLabelHide":     { "message": "Gizle — kaldırılacak CSS seçicileri, her satıra bir tane" },
+  "optionsNoRules":       { "message": "Kural tanımlanmamış." },
+  "optionsSaveRule":      { "message": "Kuralı kaydet" },
+  "optionsUpdateRule":    { "message": "Kuralı güncelle" },
+  "optionsEdit":          { "message": "Düzenle" },
+  "optionsDelete":        { "message": "Sil" },
+  "optionsCancel":        { "message": "İptal" },
+  "optionsErrorHostname": { "message": "Geçersiz ana bilgisayar adı — example.com gibi basit bir ad kullanın" },
+  "optionsErrorSelector": { "message": "Geçersiz CSS seçici" }
 }

@@ -11,5 +11,21 @@
   "selectAll":            { "message": "تحديد الكل" },
   "deselectAll":          { "message": "إلغاء تحديد الكل" },
   "copySelected":         { "message": "نسخ $COUNT$ صفحة", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "لم يتم تحديد أي علامة تبويب" }
+  "noTabsSelected":       { "message": "لم يتم تحديد أي علامة تبويب" },
+
+  "optionsTitle":         { "message": "تصدير إلى Markdown — الإعدادات" },
+  "optionsSubtitle":      { "message": "حدد محددات CSS لإزالة عناصر من مواقع محددة قبل التصدير." },
+  "optionsFormHeading":   { "message": "إضافة / تعديل قاعدة" },
+  "optionsRulesHeading":  { "message": "القواعد الموجودة" },
+  "optionsLabelHostname": { "message": "اسم المضيف (مثال: example.com)" },
+  "optionsLabelSelect":   { "message": "تحديد — محدد CSS لجذر المحتوى الرئيسي (اختياري)" },
+  "optionsLabelHide":     { "message": "إخفاء — محددات CSS للإزالة، واحد في كل سطر" },
+  "optionsNoRules":       { "message": "لا توجد قواعد محددة." },
+  "optionsSaveRule":      { "message": "حفظ القاعدة" },
+  "optionsUpdateRule":    { "message": "تحديث القاعدة" },
+  "optionsEdit":          { "message": "تعديل" },
+  "optionsDelete":        { "message": "حذف" },
+  "optionsCancel":        { "message": "إلغاء" },
+  "optionsErrorHostname": { "message": "اسم المضيف غير صالح — استخدم اسماً بسيطاً مثل example.com" },
+  "optionsErrorSelector": { "message": "محدد CSS غير صالح" }
 }

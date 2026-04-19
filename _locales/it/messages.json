@@ -11,5 +11,21 @@
   "selectAll":            { "message": "Seleziona tutto" },
   "deselectAll":          { "message": "Deseleziona tutto" },
   "copySelected":         { "message": "Copia $COUNT$ pagina/e", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Nessuna scheda selezionata" }
+  "noTabsSelected":       { "message": "Nessuna scheda selezionata" },
+
+  "optionsTitle":         { "message": "Esporta in Markdown — Impostazioni" },
+  "optionsSubtitle":      { "message": "Definisci selettori CSS per rimuovere elementi da siti specifici prima dell'esportazione." },
+  "optionsFormHeading":   { "message": "Aggiungi / modifica regola" },
+  "optionsRulesHeading":  { "message": "Regole esistenti" },
+  "optionsLabelHostname": { "message": "Hostname (es. example.com)" },
+  "optionsLabelSelect":   { "message": "Seleziona — selettore CSS per il contenuto principale (opzionale)" },
+  "optionsLabelHide":     { "message": "Nascondi — selettori CSS da rimuovere, uno per riga" },
+  "optionsNoRules":       { "message": "Nessuna regola definita." },
+  "optionsSaveRule":      { "message": "Salva regola" },
+  "optionsUpdateRule":    { "message": "Aggiorna regola" },
+  "optionsEdit":          { "message": "Modifica" },
+  "optionsDelete":        { "message": "Elimina" },
+  "optionsCancel":        { "message": "Annulla" },
+  "optionsErrorHostname": { "message": "Hostname non valido — usa un hostname semplice come example.com" },
+  "optionsErrorSelector": { "message": "Selettore CSS non valido" }
 }

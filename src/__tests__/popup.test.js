@@ -82,6 +82,28 @@ describe('popup — single page mode', () => {
     expect(btn.disabled).toBe(false);
   });
 
+  it('copies empty string when sendMessage returns null', async () => {
+    mockExecuteScript.mockResolvedValue([]);
+    mockSendMessage.mockResolvedValue(null);
+    mockWriteText.mockResolvedValue(undefined);
+
+    document.getElementById('copy').click();
+    await new Promise((r) => setTimeout(r, 50));
+
+    expect(mockWriteText).toHaveBeenCalledWith('');
+    expect(document.getElementById('copy').textContent).toBe('copied');
+  });
+
+  it('shows error state when no active tab is found', async () => {
+    mockQuery.mockResolvedValue([]);
+    document.getElementById('copy').click();
+    await new Promise((r) => setTimeout(r, 50));
+
+    const btn = document.getElementById('copy');
+    expect(btn.textContent).toBe('copyError');
+    expect(btn.className).toContain('error');
+  });
+
   it('shows error state when clipboard write fails', async () => {
     mockExecuteScript.mockResolvedValue([]);
     mockSendMessage.mockResolvedValue({ markdown: '# Hello' });
@@ -155,6 +177,32 @@ describe('popup — multi-page mode', () => {
     const checkboxes = document.querySelectorAll('#tab-list input');
     expect(checkboxes[0].checked).toBe(true);
     expect(checkboxes[1].checked).toBe(true);
+  });
+
+  it('uses the url as label when a tab has no title', async () => {
+    const noTitle = [{ id: 5, title: '', url: 'https://notitle.com/', favIconUrl: '' }];
+    mockQuery
+      .mockResolvedValueOnce(noTitle)
+      .mockResolvedValueOnce([noTitle[0]]);
+    document.getElementById('mode-multi').click();
+    await new Promise((r) => setTimeout(r, 50));
+
+    const span = document.querySelector('#tab-list .tab-title');
+    expect(span.textContent).toBe('https://notitle.com/');
+  });
+
+  it('renders an img for tabs with a favIconUrl', async () => {
+    const withIcon = [{ id: 4, title: 'Icon Tab', url: 'https://icon.com/', favIconUrl: 'https://icon.com/icon.png' }];
+    mockQuery
+      .mockResolvedValueOnce(withIcon)
+      .mockResolvedValueOnce([withIcon[0]]);
+    document.getElementById('mode-multi').click();
+    await new Promise((r) => setTimeout(r, 50));
+
+    const img = document.querySelector('#tab-list img.tab-favicon');
+    expect(img).not.toBeNull();
+    expect(img.src).toBe('https://icon.com/icon.png');
+    expect(img.alt).toBe('');
   });
 
   it('disables restricted tabs', async () => {

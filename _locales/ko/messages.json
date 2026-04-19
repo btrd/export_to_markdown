@@ -11,5 +11,21 @@
   "selectAll":            { "message": "모두 선택" },
   "deselectAll":          { "message": "모두 해제" },
   "copySelected":         { "message": "$COUNT$ 페이지 복사", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "선택된 탭 없음" }
+  "noTabsSelected":       { "message": "선택된 탭 없음" },
+
+  "optionsTitle":         { "message": "Markdown으로 내보내기 — 설정" },
+  "optionsSubtitle":      { "message": "내보내기 전에 특정 사이트에서 제거할 CSS 선택자를 정의합니다." },
+  "optionsFormHeading":   { "message": "규칙 추가 / 편집" },
+  "optionsRulesHeading":  { "message": "기존 규칙" },
+  "optionsLabelHostname": { "message": "호스트명 (예: example.com)" },
+  "optionsLabelSelect":   { "message": "선택 — 주요 콘텐츠의 CSS 선택자 (선택 사항)" },
+  "optionsLabelHide":     { "message": "숨기기 — 제거할 CSS 선택자, 한 줄에 하나씩" },
+  "optionsNoRules":       { "message": "정의된 규칙이 없습니다." },
+  "optionsSaveRule":      { "message": "규칙 저장" },
+  "optionsUpdateRule":    { "message": "규칙 업데이트" },
+  "optionsEdit":          { "message": "편집" },
+  "optionsDelete":        { "message": "삭제" },
+  "optionsCancel":        { "message": "취소" },
+  "optionsErrorHostname": { "message": "유효하지 않은 호스트명 — example.com과 같은 단순한 호스트명을 입력하세요" },
+  "optionsErrorSelector": { "message": "유효하지 않은 CSS 선택자" }
 }

@@ -11,5 +11,21 @@
   "selectAll":            { "message": "全选" },
   "deselectAll":          { "message": "取消全选" },
   "copySelected":         { "message": "复制 $COUNT$ 个页面", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "未选择任何标签页" }
+  "noTabsSelected":       { "message": "未选择任何标签页" },
+
+  "optionsTitle":         { "message": "导出为 Markdown — 设置" },
+  "optionsSubtitle":      { "message": "定义 CSS 选择器以在导出前过滤特定网站的内容。" },
+  "optionsFormHeading":   { "message": "添加 / 编辑规则" },
+  "optionsRulesHeading":  { "message": "现有规则" },
+  "optionsLabelHostname": { "message": "主机名（如 example.com）" },
+  "optionsLabelSelect":   { "message": "选择 — 主内容根元素的 CSS 选择器（可选）" },
+  "optionsLabelHide":     { "message": "隐藏 — 要删除的 CSS 选择器，每行一个" },
+  "optionsNoRules":       { "message": "尚未定义任何规则。" },
+  "optionsSaveRule":      { "message": "保存规则" },
+  "optionsUpdateRule":    { "message": "更新规则" },
+  "optionsEdit":          { "message": "编辑" },
+  "optionsDelete":        { "message": "删除" },
+  "optionsCancel":        { "message": "取消" },
+  "optionsErrorHostname": { "message": "无效的主机名 — 请使用纯主机名，如 example.com" },
+  "optionsErrorSelector": { "message": "无效的 CSS 选择器" }
 }
