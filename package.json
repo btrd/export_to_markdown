@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=24"
+    "node": ">=22"
   },
   "scripts": {
     "build": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser",
@@ -15,10 +15,10 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "package": "yarn build && zip -r export-to-markdown.xpi manifest.json popup.html dist/ icons/ _locales/ --exclude '*.DS_Store'",
-    "ext:build": "yarn build && node node_modules/.bin/web-ext build",
-    "ext:lint": "node node_modules/.bin/web-ext lint",
-    "ext:run": "yarn build && node node_modules/.bin/web-ext run",
-    "ext:sign": "yarn build && node node_modules/.bin/web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
+    "ext:build": "yarn build && web-ext build",
+    "ext:lint": "web-ext lint",
+    "ext:run": "yarn build && web-ext run",
+    "ext:sign": "yarn build && web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
   },
   "dependencies": {
     "turndown": "^7.2.4"

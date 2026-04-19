@@ -10,7 +10,7 @@ export default {
     '*.zip',
     'eslint.config.js',
     'vitest.config.js',
-    'web-ext-config.js',
+    'web-ext-config.mjs',
     '.gitignore',
     'README.md',
   ],
