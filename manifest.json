@@ -8,10 +8,15 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "48": "icons/icon48.png",
-      "96": "icons/icon96.png",
-      "128": "icons/icon128.png"
-    }
+      "48": "icons/icon48-dark.png",
+      "96": "icons/icon96-dark.png",
+      "128": "icons/icon128-dark.png"
+    },
+    "theme_icons": [
+      { "light": "icons/icon48-light.png",  "dark": "icons/icon48-dark.png",  "size": 48  },
+      { "light": "icons/icon96-light.png",  "dark": "icons/icon96-dark.png",  "size": 96  },
+      { "light": "icons/icon128-light.png", "dark": "icons/icon128-dark.png", "size": 128 }
+    ]
   },
   "content_scripts": [
     {

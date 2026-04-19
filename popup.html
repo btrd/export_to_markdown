@@ -122,6 +122,50 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1e1e1e;
+        color: #e8e8e8;
+      }
+
+      h1 { color: #e8e8e8; }
+
+      .mode-tabs button {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #aaa;
+      }
+      .mode-tabs button.active {
+        background: #1a73e8;
+        border-color: #1a73e8;
+        color: #fff;
+      }
+
+      .action-btn {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #e8e8e8;
+      }
+      .action-btn:not(:disabled):hover { background: #333; }
+      .action-btn.success { background: #1a3d26; border-color: #34a853; color: #57d679; }
+      .action-btn.error   { background: #3d1a1a; border-color: #ea4335; color: #f28b82; }
+
+      .tab-actions button { color: #5ba3f5; }
+
+      #tab-list {
+        border-color: #444;
+      }
+
+      .tab-item {
+        border-bottom-color: #2e2e2e;
+      }
+      .tab-item:hover { background: #2a2a2a; }
+
+      .tab-favicon-placeholder { background: #555; }
+
+      .tab-title { color: #e8e8e8; }
+    }
   </style>
 </head>
 <body>
