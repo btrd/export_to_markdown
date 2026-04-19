@@ -1,0 +1,28 @@
+{
+  "name": "export_to_markdown",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser",
+    "watch": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "turndown": "^7.2.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vitest/coverage-v8": "^4.1.4",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.2.1",
+    "eslint-plugin-jsonc": "^3.1.2",
+    "globals": "^17.5.0",
+    "jsdom": "^29.0.2",
+    "vitest": "^4.1.4"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Экспорт в Markdown" },
+  "extensionDescription": { "message": "Экспортируйте любую веб-страницу в Markdown" },
+  "popupTitle":           { "message": "Экспорт в Markdown" },
+  "copyButton":           { "message": "Копировать в буфер обмена" },
+  "copying":              { "message": "Копирование…" },
+  "copied":               { "message": "✓ Скопировано!" },
+  "copyError":            { "message": "✗ Ошибка" },
+  "modeSingle":           { "message": "Текущая страница" },
+  "modeMultiple":         { "message": "Несколько страниц" },
+  "selectAll":            { "message": "Выбрать все" },
+  "deselectAll":          { "message": "Снять выделение" },
+  "copySelected":         { "message": "Копировать $COUNT$ стр.", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "Нет выбранных вкладок" }
+}

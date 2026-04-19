@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Ekspor ke Markdown" },
+  "extensionDescription": { "message": "Ekspor halaman web apa pun ke Markdown" },
+  "popupTitle":           { "message": "Ekspor ke Markdown" },
+  "copyButton":           { "message": "Salin ke clipboard" },
+  "copying":              { "message": "Menyalin…" },
+  "copied":               { "message": "✓ Disalin!" },
+  "copyError":            { "message": "✗ Kesalahan" },
+  "modeSingle":           { "message": "Halaman saat ini" },
+  "modeMultiple":         { "message": "Beberapa halaman" },
+  "selectAll":            { "message": "Pilih semua" },
+  "deselectAll":          { "message": "Batalkan semua" },
+  "copySelected":         { "message": "Salin $COUNT$ halaman", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "Tidak ada tab yang dipilih" }
+}

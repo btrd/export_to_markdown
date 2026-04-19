@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Markdown으로 내보내기" },
+  "extensionDescription": { "message": "모든 웹 페이지를 Markdown으로 내보내기" },
+  "popupTitle":           { "message": "Markdown으로 내보내기" },
+  "copyButton":           { "message": "클립보드에 복사" },
+  "copying":              { "message": "복사 중…" },
+  "copied":               { "message": "✓ 복사됨!" },
+  "copyError":            { "message": "✗ 오류" },
+  "modeSingle":           { "message": "현재 페이지" },
+  "modeMultiple":         { "message": "여러 페이지" },
+  "selectAll":            { "message": "모두 선택" },
+  "deselectAll":          { "message": "모두 해제" },
+  "copySelected":         { "message": "$COUNT$ 페이지 복사", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "선택된 탭 없음" }
+}

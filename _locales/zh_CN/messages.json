@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "导出为 Markdown" },
+  "extensionDescription": { "message": "将任意网页导出为 Markdown" },
+  "popupTitle":           { "message": "导出为 Markdown" },
+  "copyButton":           { "message": "复制到剪贴板" },
+  "copying":              { "message": "复制中…" },
+  "copied":               { "message": "✓ 已复制！" },
+  "copyError":            { "message": "✗ 错误" },
+  "modeSingle":           { "message": "当前页面" },
+  "modeMultiple":         { "message": "多个页面" },
+  "selectAll":            { "message": "全选" },
+  "deselectAll":          { "message": "取消全选" },
+  "copySelected":         { "message": "复制 $COUNT$ 个页面", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "未选择任何标签页" }
+}

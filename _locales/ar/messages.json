@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "تصدير إلى Markdown" },
+  "extensionDescription": { "message": "صدِّر أي صفحة ويب إلى Markdown" },
+  "popupTitle":           { "message": "تصدير إلى Markdown" },
+  "copyButton":           { "message": "نسخ إلى الحافظة" },
+  "copying":              { "message": "جارٍ النسخ…" },
+  "copied":               { "message": "✓ تم النسخ!" },
+  "copyError":            { "message": "✗ خطأ" },
+  "modeSingle":           { "message": "الصفحة الحالية" },
+  "modeMultiple":         { "message": "صفحات متعددة" },
+  "selectAll":            { "message": "تحديد الكل" },
+  "deselectAll":          { "message": "إلغاء تحديد الكل" },
+  "copySelected":         { "message": "نسخ $COUNT$ صفحة", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "لم يتم تحديد أي علامة تبويب" }
+}

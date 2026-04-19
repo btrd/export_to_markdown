@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Esporta in Markdown" },
+  "extensionDescription": { "message": "Esporta qualsiasi pagina web in Markdown" },
+  "popupTitle":           { "message": "Esporta in Markdown" },
+  "copyButton":           { "message": "Copia negli appunti" },
+  "copying":              { "message": "Copia in corso…" },
+  "copied":               { "message": "✓ Copiato!" },
+  "copyError":            { "message": "✗ Errore" },
+  "modeSingle":           { "message": "Pagina corrente" },
+  "modeMultiple":         { "message": "Più pagine" },
+  "selectAll":            { "message": "Seleziona tutto" },
+  "deselectAll":          { "message": "Deseleziona tutto" },
+  "copySelected":         { "message": "Copia $COUNT$ pagina/e", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "Nessuna scheda selezionata" }
+}

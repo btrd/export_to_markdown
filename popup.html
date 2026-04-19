@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Export to Markdown</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      width: 320px;
+      margin: 0;
+      padding: 12px;
+    }
+
+    h1 {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 10px;
+      color: #333;
+    }
+
+    /* Mode toggle */
+    .mode-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .mode-tabs button {
+      flex: 1;
+      padding: 6px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f5f5f5;
+      color: #555;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .mode-tabs button.active {
+      background: #1a73e8;
+      border-color: #1a73e8;
+      color: #fff;
+    }
+
+    /* Shared button */
+    .action-btn {
+      width: 100%;
+      padding: 9px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f5f5f5;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .action-btn:disabled { opacity: 0.5; cursor: default; }
+    .action-btn:not(:disabled):hover { background: #e8e8e8; }
+    .action-btn.success { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+    .action-btn.error   { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+
+    /* Tab list */
+    .tab-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .tab-actions button {
+      font-size: 11px;
+      background: none;
+      border: none;
+      color: #1a73e8;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    #tab-list {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .tab-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.1s;
+    }
+    .tab-item:last-child { border-bottom: none; }
+    .tab-item:hover { background: #f8f8f8; }
+    .tab-item.restricted { opacity: 0.4; cursor: default; }
+
+    .tab-item input[type="checkbox"] { flex-shrink: 0; cursor: pointer; }
+    .tab-item.restricted input[type="checkbox"] { cursor: default; }
+
+    .tab-favicon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+    .tab-favicon-placeholder {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      background: #ccc;
+      border-radius: 2px;
+    }
+
+    .tab-title {
+      font-size: 12px;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title"></h1>
+
+  <div class="mode-tabs">
+    <button id="mode-single" class="active"></button>
+    <button id="mode-multi"></button>
+  </div>
+
+  <!-- Single page panel -->
+  <div id="panel-single">
+    <button id="copy" class="action-btn"></button>
+  </div>
+
+  <!-- Multi page panel -->
+  <div id="panel-multi" hidden>
+    <div class="tab-actions">
+      <button id="select-all"></button>
+      <button id="deselect-all"></button>
+    </div>
+    <div id="tab-list"></div>
+    <button id="copy-multi" class="action-btn" disabled></button>
+  </div>
+
+  <script src="dist/popup.js"></script>
+</body>
+</html>

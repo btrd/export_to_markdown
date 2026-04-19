@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Markdownにエクスポート" },
+  "extensionDescription": { "message": "任意のウェブページをMarkdownにエクスポート" },
+  "popupTitle":           { "message": "Markdownにエクスポート" },
+  "copyButton":           { "message": "クリップボードにコピー" },
+  "copying":              { "message": "コピー中…" },
+  "copied":               { "message": "✓ コピーしました！" },
+  "copyError":            { "message": "✗ エラー" },
+  "modeSingle":           { "message": "現在のページ" },
+  "modeMultiple":         { "message": "複数のページ" },
+  "selectAll":            { "message": "すべて選択" },
+  "deselectAll":          { "message": "すべて解除" },
+  "copySelected":         { "message": "$COUNT$ ページをコピー", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "タブが選択されていません" }
+}

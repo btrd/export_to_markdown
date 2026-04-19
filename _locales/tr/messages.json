@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Markdown'a Dışa Aktar" },
+  "extensionDescription": { "message": "Herhangi bir web sayfasını Markdown'a dışa aktarın" },
+  "popupTitle":           { "message": "Markdown'a Dışa Aktar" },
+  "copyButton":           { "message": "Panoya kopyala" },
+  "copying":              { "message": "Kopyalanıyor…" },
+  "copied":               { "message": "✓ Kopyalandı!" },
+  "copyError":            { "message": "✗ Hata" },
+  "modeSingle":           { "message": "Geçerli sayfa" },
+  "modeMultiple":         { "message": "Birden fazla sayfa" },
+  "selectAll":            { "message": "Tümünü seç" },
+  "deselectAll":          { "message": "Tümünü kaldır" },
+  "copySelected":         { "message": "$COUNT$ sayfa kopyala", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "Sekme seçilmedi" }
+}

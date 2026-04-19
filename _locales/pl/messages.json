@@ -1,0 +1,15 @@
+{
+  "extensionName":        { "message": "Eksportuj do Markdown" },
+  "extensionDescription": { "message": "Eksportuj dowolną stronę internetową do Markdown" },
+  "popupTitle":           { "message": "Eksportuj do Markdown" },
+  "copyButton":           { "message": "Kopiuj do schowka" },
+  "copying":              { "message": "Kopiowanie…" },
+  "copied":               { "message": "✓ Skopiowano!" },
+  "copyError":            { "message": "✗ Błąd" },
+  "modeSingle":           { "message": "Bieżąca strona" },
+  "modeMultiple":         { "message": "Wiele stron" },
+  "selectAll":            { "message": "Zaznacz wszystko" },
+  "deselectAll":          { "message": "Odznacz wszystko" },
+  "copySelected":         { "message": "Kopiuj $COUNT$ stronę/y", "placeholders": { "count": { "content": "$1" } } },
+  "noTabsSelected":       { "message": "Brak zaznaczonych kart" }
+}
