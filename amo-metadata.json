@@ -1,0 +1,22 @@
+{
+  "categories": { "firefox": ["web-development", "tabs"] },
+  "requires_payment": false,
+  "summary": {
+    "en-US": "Export any web page to Markdown and copy it to your clipboard.",
+    "fr": "Exportez n'importe quelle page web en Markdown et copiez-la dans votre presse-papiers.",
+    "de": "Exportiere beliebige Webseiten als Markdown und kopiere sie in die Zwischenablage.",
+    "es-ES": "Exporta cualquier página web a Markdown y cópiala al portapapeles.",
+    "it": "Esporta qualsiasi pagina web in Markdown e copiala negli appunti.",
+    "ja": "任意のウェブページをMarkdownにエクスポートしてクリップボードにコピーします。",
+    "zh-CN": "将任意网页导出为 Markdown 并复制到剪贴板。"
+  },
+  "homepage": {
+    "en-US": "https://github.com/btrd/export_to_markdown"
+  },
+  "support_email": {
+    "en-US": "export_to_markdown@jean.btrd.me"
+  },
+  "version": {
+    "license": "MIT"
+  }
+}

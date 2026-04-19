@@ -18,7 +18,7 @@
     "ext:build": "yarn build && web-ext build",
     "ext:lint": "web-ext lint",
     "ext:run": "yarn build && web-ext run",
-    "ext:sign": "yarn build && web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
+    "ext:sign": "yarn build && web-ext sign --channel=listed --amo-metadata=amo-metadata.json --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
   },
   "dependencies": {
     "turndown": "^7.2.4"

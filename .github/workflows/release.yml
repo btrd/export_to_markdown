@@ -25,11 +25,14 @@ jobs:
 
       - run: yarn test
 
-      - name: Build XPI
-        run: yarn package
+      - name: Sign and build XPI
+        run: yarn ext:sign
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: export-to-markdown.xpi
+          files: web-ext-artifacts/*.xpi
           generate_release_notes: true
