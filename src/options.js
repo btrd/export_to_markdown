@@ -16,12 +16,27 @@ async function setRules(rules) {
   await browser.storage.sync.set({ rules });
 }
 
+function makeSelectorRow(type, value) {
+  const row = document.createElement('div');
+  row.className = 'rule-row';
+  const badge = document.createElement('span');
+  badge.className = `rule-type ${type}`;
+  badge.textContent = type;
+  const code = document.createElement('code');
+  code.textContent = value;
+  row.append(badge, code);
+  return row;
+}
+
 function renderRules(rules) {
-  rulesList.innerHTML = '';
+  rulesList.replaceChildren();
 
   const entries = Object.entries(rules);
   if (entries.length === 0) {
-    rulesList.innerHTML = '<p class="empty">No rules defined.</p>';
+    const empty = document.createElement('p');
+    empty.className = 'empty';
+    empty.textContent = 'No rules defined.';
+    rulesList.appendChild(empty);
     return;
   }
 
@@ -29,40 +44,40 @@ function renderRules(rules) {
     const card = document.createElement('div');
     card.className = 'rule-card';
 
-    const selectRow = rule.select
-      ? `<div class="rule-row"><span class="rule-type select">select</span><code>${rule.select}</code></div>`
-      : '';
+    const header = document.createElement('div');
+    header.className = 'rule-header';
 
-    const hideRows = (rule.hide ?? [])
-      .map((s) => `<div class="rule-row"><span class="rule-type hide">hide</span><code>${s}</code></div>`)
-      .join('');
+    const hostnameSpan = document.createElement('span');
+    hostnameSpan.className = 'rule-hostname';
+    hostnameSpan.textContent = hostname;
 
-    card.innerHTML = `
-      <div class="rule-header">
-        <span class="rule-hostname">${hostname}</span>
-        <div class="rule-actions">
-          <button class="btn-edit" data-hostname="${hostname}">Edit</button>
-          <button class="danger btn-delete" data-hostname="${hostname}">Delete</button>
-        </div>
-      </div>
-      ${selectRow}${hideRows}
-    `;
+    const actions = document.createElement('div');
+    actions.className = 'rule-actions';
 
-    rulesList.appendChild(card);
-  }
+    const editBtn = document.createElement('button');
+    editBtn.className = 'btn-edit';
+    editBtn.textContent = 'Edit';
+    editBtn.addEventListener('click', () => startEdit(hostname, rule));
 
-  rulesList.querySelectorAll('.btn-edit').forEach((btn) => {
-    btn.addEventListener('click', () => startEdit(btn.dataset.hostname, rules[btn.dataset.hostname]));
-  });
-
-  rulesList.querySelectorAll('.btn-delete').forEach((btn) => {
-    btn.addEventListener('click', async () => {
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'danger btn-delete';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', async () => {
       const updated = await getRules();
-      delete updated[btn.dataset.hostname];
+      delete updated[hostname];
       await setRules(updated);
       renderRules(updated);
     });
-  });
+
+    actions.append(editBtn, deleteBtn);
+    header.append(hostnameSpan, actions);
+    card.appendChild(header);
+
+    if (rule.select) card.appendChild(makeSelectorRow('select', rule.select));
+    (rule.hide ?? []).forEach((s) => card.appendChild(makeSelectorRow('hide', s)));
+
+    rulesList.appendChild(card);
+  }
 }
 
 function startEdit(hostname, rule) {
