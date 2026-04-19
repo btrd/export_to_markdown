@@ -23,14 +23,36 @@ td.addRule('fencedCodeBlock', {
 // so the output isn't polluted with menus, footers, and tracking scripts.
 const STRIP_TAGS = ['nav', 'footer', 'aside', 'script', 'style', 'noscript'];
 
-export function extractMarkdown(document) {
-  // Prefer <article> when present — it's the semantic main content element.
-  // Fall back to <body> for pages that don't use it.
-  const article = document.querySelector('article') ?? document.body;
+// Match a hostname against a rules key, supporting subdomains:
+// key "example.com" matches "example.com" and "www.example.com".
+function findRules(hostname, rules) {
+  const entry = Object.keys(rules).find(
+    (key) => hostname === key || hostname.endsWith(`.${key}`)
+  );
+  return entry ? rules[entry] : {};
+}
+
+export function extractMarkdown(document, rules = {}) {
+  const siteRules = findRules(document.location.hostname, rules);
+
+  // Use the site-specific select rule if defined, then fall back to
+  // <article> (semantic main content), then <body>.
+  const root =
+    (siteRules.select && document.querySelector(siteRules.select)) ??
+    document.querySelector('article') ??
+    document.body;
 
   // Clone so we can mutate (strip tags) without touching the live DOM.
-  const clone = article.cloneNode(true);
-  STRIP_TAGS.forEach((tag) => clone.querySelectorAll(tag).forEach((el) => el.remove()));
+  const clone = root.cloneNode(true);
+
+  const hideSelectors = [...STRIP_TAGS, ...(siteRules.hide ?? [])];
+  hideSelectors.forEach((selector) => {
+    try {
+      clone.querySelectorAll(selector).forEach((el) => el.remove());
+    } catch {
+      // Invalid selectors should not break the conversion.
+    }
+  });
 
   const title = document.title ? `# ${document.title}\n\n` : '';
   const url = `> Source: ${document.location.href}\n\n`;

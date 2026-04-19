@@ -7,14 +7,14 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser",
-    "watch": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser --watch",
+    "build": "esbuild src/content.js src/popup.js src/options.js --bundle --outdir=dist --format=esm --platform=browser",
+    "watch": "esbuild src/content.js src/popup.js src/options.js --bundle --outdir=dist --format=esm --platform=browser --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "package": "yarn build && zip -r export-to-markdown.xpi manifest.json popup.html dist/ icons/ _locales/ --exclude '*.DS_Store'",
+    "package": "yarn build && zip -r export-to-markdown.xpi manifest.json popup.html options.html dist/ icons/ _locales/ --exclude '*.DS_Store'",
     "ext:build": "yarn build && web-ext build",
     "ext:lint": "web-ext lint",
     "ext:run": "yarn build && web-ext run",

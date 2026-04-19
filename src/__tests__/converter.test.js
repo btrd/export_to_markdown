@@ -111,3 +111,72 @@ describe('extractMarkdown', () => {
     expect(extractMarkdown(doc)).not.toMatch(/^#\s/);
   });
 });
+
+describe('site-specific rules', () => {
+  const rules = {
+    'leboncoin.fr': {
+      select: '[data-qa-id="adview-body"]',
+      hide: ['[data-qa-id="adview-similar-ads"]'],
+    },
+    'example.org': {
+      hide: ['[data-testid="sidebarColumn"]'],
+    },
+  };
+
+  it('uses the select rule as content root', () => {
+    const doc = makeDocument(
+      '<div data-qa-id="adview-body"><p>Ad content</p></div><div>Other stuff</div>',
+      { href: 'https://www.leboncoin.fr/annonce/123' }
+    );
+    const md = extractMarkdown(doc, rules);
+    expect(md).toContain('Ad content');
+    expect(md).not.toContain('Other stuff');
+  });
+
+  it('strips hide selectors', () => {
+    const doc = makeDocument(
+      '<div data-qa-id="adview-body"><p>Main</p><div data-qa-id="adview-similar-ads">Similar</div></div>',
+      { href: 'https://www.leboncoin.fr/annonce/123' }
+    );
+    const md = extractMarkdown(doc, rules);
+    expect(md).toContain('Main');
+    expect(md).not.toContain('Similar');
+  });
+
+  it('falls back to article/body when select rule matches nothing', () => {
+    const doc = makeDocument(
+      '<article><p>Article content</p></article>',
+      { href: 'https://www.leboncoin.fr/annonce/123' }
+    );
+    expect(extractMarkdown(doc, rules)).toContain('Article content');
+  });
+
+  it('matches subdomains against the base hostname key', () => {
+    const doc = makeDocument(
+      '<p>Post</p><div data-testid="sidebarColumn">Trending</div>',
+      { href: 'https://www.example.org/page' }
+    );
+    const md = extractMarkdown(doc, rules);
+    expect(md).toContain('Post');
+    expect(md).not.toContain('Trending');
+  });
+
+  it('applies no extra rules on an unknown hostname', () => {
+    const doc = makeDocument(
+      '<p>Content</p><div data-qa-id="adview-similar-ads">Similar</div>',
+      { href: 'https://unknown-site.com/' }
+    );
+    expect(extractMarkdown(doc, rules)).toContain('Similar');
+  });
+
+  it('applies no rules when rules object is empty', () => {
+    const doc = makeDocument('<p>Content</p>', { href: 'https://www.leboncoin.fr/' });
+    expect(extractMarkdown(doc, {})).toContain('Content');
+  });
+
+  it('does not throw on an invalid hide selector', () => {
+    const doc = makeDocument('<p>Content</p>', { href: 'https://www.leboncoin.fr/' });
+    const badRules = { 'leboncoin.fr': { hide: ['[invalid:::selector'] } };
+    expect(() => extractMarkdown(doc, badRules)).not.toThrow();
+  });
+});
