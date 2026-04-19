@@ -1,7 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 let messageListener;
-const mockAddListener = vi.fn((fn) => { messageListener = fn; });
+const mockAddListener = vi.fn((fn) => {
+  messageListener = fn;
+});
 const mockStorageGet = vi.fn();
 
 vi.stubGlobal('browser', {
@@ -12,7 +14,9 @@ vi.stubGlobal('browser', {
 describe('content script', () => {
   beforeEach(async () => {
     vi.clearAllMocks();
-    mockAddListener.mockImplementation((fn) => { messageListener = fn; });
+    mockAddListener.mockImplementation((fn) => {
+      messageListener = fn;
+    });
     vi.resetModules();
     await import('../content.js');
   });

@@ -1,31 +1,42 @@
 {
-  "extensionName":        { "message": "Exporteren naar Markdown" },
+  "extensionName": { "message": "Exporteren naar Markdown" },
   "extensionDescription": { "message": "Exporteer elke webpagina naar Markdown" },
-  "popupTitle":           { "message": "Exporteren naar Markdown" },
-  "copyButton":           { "message": "Kopiëren naar klembord" },
-  "copying":              { "message": "Kopiëren…" },
-  "copied":               { "message": "✓ Gekopieerd!" },
-  "copyError":            { "message": "✗ Fout" },
-  "modeSingle":           { "message": "Huidige pagina" },
-  "modeMultiple":         { "message": "Meerdere pagina's" },
-  "selectAll":            { "message": "Alles selecteren" },
-  "deselectAll":          { "message": "Alles deselecteren" },
-  "copySelected":         { "message": "$COUNT$ pagina('s) kopiëren", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Geen tabbladen geselecteerd" },
+  "popupTitle": { "message": "Exporteren naar Markdown" },
+  "copyButton": { "message": "Kopiëren naar klembord" },
+  "copying": { "message": "Kopiëren…" },
+  "copied": { "message": "✓ Gekopieerd!" },
+  "copyError": { "message": "✗ Fout" },
+  "modeSingle": { "message": "Huidige pagina" },
+  "modeMultiple": { "message": "Meerdere pagina's" },
+  "selectAll": { "message": "Alles selecteren" },
+  "deselectAll": { "message": "Alles deselecteren" },
+  "copySelected": {
+    "message": "$COUNT$ pagina('s) kopiëren",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "noTabsSelected": { "message": "Geen tabbladen geselecteerd" },
 
-  "optionsTitle":         { "message": "Exporteren naar Markdown — Instellingen" },
-  "optionsSubtitle":      { "message": "Definieer CSS-selectors om elementen van specifieke sites te verwijderen vóór het exporteren." },
-  "optionsFormHeading":   { "message": "Regel toevoegen / bewerken" },
-  "optionsRulesHeading":  { "message": "Bestaande regels" },
+  "optionsTitle": { "message": "Exporteren naar Markdown — Instellingen" },
+  "optionsSubtitle": {
+    "message": "Definieer CSS-selectors om elementen van specifieke sites te verwijderen vóór het exporteren."
+  },
+  "optionsFormHeading": { "message": "Regel toevoegen / bewerken" },
+  "optionsRulesHeading": { "message": "Bestaande regels" },
   "optionsLabelHostname": { "message": "Hostnaam (bijv. example.com)" },
-  "optionsLabelSelect":   { "message": "Selecteren — CSS-selector voor de hoofdinhoud (optioneel)" },
-  "optionsLabelHide":     { "message": "Verbergen — CSS-selectors om te verwijderen, één per regel" },
-  "optionsNoRules":       { "message": "Geen regels gedefinieerd." },
-  "optionsSaveRule":      { "message": "Regel opslaan" },
-  "optionsUpdateRule":    { "message": "Regel bijwerken" },
-  "optionsEdit":          { "message": "Bewerken" },
-  "optionsDelete":        { "message": "Verwijderen" },
-  "optionsCancel":        { "message": "Annuleren" },
-  "optionsErrorHostname": { "message": "Ongeldige hostnaam — gebruik een eenvoudige hostnaam zoals example.com" },
+  "optionsLabelSelect": {
+    "message": "Selecteren — CSS-selector voor de hoofdinhoud (optioneel)"
+  },
+  "optionsLabelHide": {
+    "message": "Verbergen — CSS-selectors om te verwijderen, één per regel"
+  },
+  "optionsNoRules": { "message": "Geen regels gedefinieerd." },
+  "optionsSaveRule": { "message": "Regel opslaan" },
+  "optionsUpdateRule": { "message": "Regel bijwerken" },
+  "optionsEdit": { "message": "Bewerken" },
+  "optionsDelete": { "message": "Verwijderen" },
+  "optionsCancel": { "message": "Annuleren" },
+  "optionsErrorHostname": {
+    "message": "Ongeldige hostnaam — gebruik een eenvoudige hostnaam zoals example.com"
+  },
   "optionsErrorSelector": { "message": "Ongeldige CSS-selector" }
 }

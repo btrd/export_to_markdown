@@ -144,17 +144,18 @@ describe('site-specific rules', () => {
   });
 
   it('falls back to article/body when select rule matches nothing', () => {
-    const doc = makeDocument(
-      '<article><p>Article content</p></article>',
-      { href: 'https://www.leboncoin.fr/annonce/123' }
-    );
+    const doc = makeDocument('<article><p>Article content</p></article>', {
+      href: 'https://www.leboncoin.fr/annonce/123',
+    });
     expect(extractMarkdown(doc, rules)).toContain('Article content');
   });
 
   it('matches subdomains against the base hostname key', () => {
     const doc = makeDocument(
       '<p>Post</p><div data-testid="sidebarColumn">Trending</div>',
-      { href: 'https://www.example.org/page' }
+      {
+        href: 'https://www.example.org/page',
+      }
     );
     const md = extractMarkdown(doc, rules);
     expect(md).toContain('Post');
@@ -164,7 +165,9 @@ describe('site-specific rules', () => {
   it('applies no extra rules on an unknown hostname', () => {
     const doc = makeDocument(
       '<p>Content</p><div data-qa-id="adview-similar-ads">Similar</div>',
-      { href: 'https://unknown-site.com/' }
+      {
+        href: 'https://unknown-site.com/',
+      }
     );
     expect(extractMarkdown(doc, rules)).toContain('Similar');
   });

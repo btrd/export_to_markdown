@@ -1,31 +1,42 @@
 {
-  "extensionName":        { "message": "Ekspor ke Markdown" },
+  "extensionName": { "message": "Ekspor ke Markdown" },
   "extensionDescription": { "message": "Ekspor halaman web apa pun ke Markdown" },
-  "popupTitle":           { "message": "Ekspor ke Markdown" },
-  "copyButton":           { "message": "Salin ke clipboard" },
-  "copying":              { "message": "Menyalin…" },
-  "copied":               { "message": "✓ Disalin!" },
-  "copyError":            { "message": "✗ Kesalahan" },
-  "modeSingle":           { "message": "Halaman saat ini" },
-  "modeMultiple":         { "message": "Beberapa halaman" },
-  "selectAll":            { "message": "Pilih semua" },
-  "deselectAll":          { "message": "Batalkan semua" },
-  "copySelected":         { "message": "Salin $COUNT$ halaman", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Tidak ada tab yang dipilih" },
+  "popupTitle": { "message": "Ekspor ke Markdown" },
+  "copyButton": { "message": "Salin ke clipboard" },
+  "copying": { "message": "Menyalin…" },
+  "copied": { "message": "✓ Disalin!" },
+  "copyError": { "message": "✗ Kesalahan" },
+  "modeSingle": { "message": "Halaman saat ini" },
+  "modeMultiple": { "message": "Beberapa halaman" },
+  "selectAll": { "message": "Pilih semua" },
+  "deselectAll": { "message": "Batalkan semua" },
+  "copySelected": {
+    "message": "Salin $COUNT$ halaman",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "noTabsSelected": { "message": "Tidak ada tab yang dipilih" },
 
-  "optionsTitle":         { "message": "Ekspor ke Markdown — Pengaturan" },
-  "optionsSubtitle":      { "message": "Tentukan pemilih CSS untuk menghapus elemen dari situs tertentu sebelum mengekspor." },
-  "optionsFormHeading":   { "message": "Tambah / edit aturan" },
-  "optionsRulesHeading":  { "message": "Aturan yang ada" },
+  "optionsTitle": { "message": "Ekspor ke Markdown — Pengaturan" },
+  "optionsSubtitle": {
+    "message": "Tentukan pemilih CSS untuk menghapus elemen dari situs tertentu sebelum mengekspor."
+  },
+  "optionsFormHeading": { "message": "Tambah / edit aturan" },
+  "optionsRulesHeading": { "message": "Aturan yang ada" },
   "optionsLabelHostname": { "message": "Nama host (mis. example.com)" },
-  "optionsLabelSelect":   { "message": "Pilih — pemilih CSS untuk konten utama (opsional)" },
-  "optionsLabelHide":     { "message": "Sembunyikan — pemilih CSS untuk dihapus, satu per baris" },
-  "optionsNoRules":       { "message": "Tidak ada aturan yang ditentukan." },
-  "optionsSaveRule":      { "message": "Simpan aturan" },
-  "optionsUpdateRule":    { "message": "Perbarui aturan" },
-  "optionsEdit":          { "message": "Edit" },
-  "optionsDelete":        { "message": "Hapus" },
-  "optionsCancel":        { "message": "Batal" },
-  "optionsErrorHostname": { "message": "Nama host tidak valid — gunakan nama sederhana seperti example.com" },
+  "optionsLabelSelect": {
+    "message": "Pilih — pemilih CSS untuk konten utama (opsional)"
+  },
+  "optionsLabelHide": {
+    "message": "Sembunyikan — pemilih CSS untuk dihapus, satu per baris"
+  },
+  "optionsNoRules": { "message": "Tidak ada aturan yang ditentukan." },
+  "optionsSaveRule": { "message": "Simpan aturan" },
+  "optionsUpdateRule": { "message": "Perbarui aturan" },
+  "optionsEdit": { "message": "Edit" },
+  "optionsDelete": { "message": "Hapus" },
+  "optionsCancel": { "message": "Batal" },
+  "optionsErrorHostname": {
+    "message": "Nama host tidak valid — gunakan nama sederhana seperti example.com"
+  },
   "optionsErrorSelector": { "message": "Pemilih CSS tidak valid" }
 }

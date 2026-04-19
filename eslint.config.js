@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import prettier from 'eslint-config-prettier';
 import jsonc from 'eslint-plugin-jsonc';
 import globals from 'globals';
 
@@ -18,7 +19,7 @@ export default [
       'no-unused-vars': 'error',
       'no-console': 'warn',
       'prefer-const': 'error',
-      'eqeqeq': ['error', 'always'],
+      eqeqeq: ['error', 'always'],
     },
   },
   {
@@ -37,6 +38,7 @@ export default [
       'jsonc/sort-keys': 'off',
     },
   },
+  prettier,
   {
     ignores: ['dist/', 'node_modules/'],
   },

@@ -1,31 +1,42 @@
 {
-  "extensionName":        { "message": "Экспорт в Markdown" },
+  "extensionName": { "message": "Экспорт в Markdown" },
   "extensionDescription": { "message": "Экспортируйте любую веб-страницу в Markdown" },
-  "popupTitle":           { "message": "Экспорт в Markdown" },
-  "copyButton":           { "message": "Копировать в буфер обмена" },
-  "copying":              { "message": "Копирование…" },
-  "copied":               { "message": "✓ Скопировано!" },
-  "copyError":            { "message": "✗ Ошибка" },
-  "modeSingle":           { "message": "Текущая страница" },
-  "modeMultiple":         { "message": "Несколько страниц" },
-  "selectAll":            { "message": "Выбрать все" },
-  "deselectAll":          { "message": "Снять выделение" },
-  "copySelected":         { "message": "Копировать $COUNT$ стр.", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Нет выбранных вкладок" },
+  "popupTitle": { "message": "Экспорт в Markdown" },
+  "copyButton": { "message": "Копировать в буфер обмена" },
+  "copying": { "message": "Копирование…" },
+  "copied": { "message": "✓ Скопировано!" },
+  "copyError": { "message": "✗ Ошибка" },
+  "modeSingle": { "message": "Текущая страница" },
+  "modeMultiple": { "message": "Несколько страниц" },
+  "selectAll": { "message": "Выбрать все" },
+  "deselectAll": { "message": "Снять выделение" },
+  "copySelected": {
+    "message": "Копировать $COUNT$ стр.",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "noTabsSelected": { "message": "Нет выбранных вкладок" },
 
-  "optionsTitle":         { "message": "Экспорт в Markdown — Настройки" },
-  "optionsSubtitle":      { "message": "Задайте CSS-селекторы для удаления элементов с определённых сайтов перед экспортом." },
-  "optionsFormHeading":   { "message": "Добавить / изменить правило" },
-  "optionsRulesHeading":  { "message": "Существующие правила" },
+  "optionsTitle": { "message": "Экспорт в Markdown — Настройки" },
+  "optionsSubtitle": {
+    "message": "Задайте CSS-селекторы для удаления элементов с определённых сайтов перед экспортом."
+  },
+  "optionsFormHeading": { "message": "Добавить / изменить правило" },
+  "optionsRulesHeading": { "message": "Существующие правила" },
   "optionsLabelHostname": { "message": "Имя хоста (например, example.com)" },
-  "optionsLabelSelect":   { "message": "Выбор — CSS-селектор для основного содержимого (необязательно)" },
-  "optionsLabelHide":     { "message": "Скрыть — CSS-селекторы для удаления, по одному на строке" },
-  "optionsNoRules":       { "message": "Правила не определены." },
-  "optionsSaveRule":      { "message": "Сохранить правило" },
-  "optionsUpdateRule":    { "message": "Обновить правило" },
-  "optionsEdit":          { "message": "Изменить" },
-  "optionsDelete":        { "message": "Удалить" },
-  "optionsCancel":        { "message": "Отмена" },
-  "optionsErrorHostname": { "message": "Неверное имя хоста — используйте простое имя, например example.com" },
+  "optionsLabelSelect": {
+    "message": "Выбор — CSS-селектор для основного содержимого (необязательно)"
+  },
+  "optionsLabelHide": {
+    "message": "Скрыть — CSS-селекторы для удаления, по одному на строке"
+  },
+  "optionsNoRules": { "message": "Правила не определены." },
+  "optionsSaveRule": { "message": "Сохранить правило" },
+  "optionsUpdateRule": { "message": "Обновить правило" },
+  "optionsEdit": { "message": "Изменить" },
+  "optionsDelete": { "message": "Удалить" },
+  "optionsCancel": { "message": "Отмена" },
+  "optionsErrorHostname": {
+    "message": "Неверное имя хоста — используйте простое имя, например example.com"
+  },
   "optionsErrorSelector": { "message": "Неверный CSS-селектор" }
 }

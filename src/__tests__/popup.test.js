@@ -40,7 +40,7 @@ async function setupDOM() {
 const TABS = [
   { id: 1, title: 'Page One', url: 'https://one.com/', favIconUrl: '' },
   { id: 2, title: 'Page Two', url: 'https://two.com/', favIconUrl: '' },
-  { id: 3, title: 'About blank', url: 'about:blank',   favIconUrl: '' },
+  { id: 3, title: 'About blank', url: 'about:blank', favIconUrl: '' },
 ];
 
 describe('popup — single page mode', () => {
@@ -174,16 +174,14 @@ describe('popup — single page mode', () => {
 describe('popup — multi-page mode', () => {
   beforeEach(async () => {
     vi.clearAllMocks();
-    mockGetMessage.mockImplementation((key, args) =>
-      args ? `${key}(${args})` : key
-    );
+    mockGetMessage.mockImplementation((key, args) => (args ? `${key}(${args})` : key));
     mockGetUILanguage.mockReturnValue('en');
     await setupDOM();
   });
 
   async function openMultiMode() {
     mockQuery
-      .mockResolvedValueOnce(TABS)                 // allTabs
+      .mockResolvedValueOnce(TABS) // allTabs
       .mockResolvedValueOnce([TABS[0], TABS[1]]); // highlightedTabs
     document.getElementById('mode-multi').click();
     await new Promise((r) => setTimeout(r, 50));
@@ -210,9 +208,7 @@ describe('popup — multi-page mode', () => {
 
   it('uses the url as label when a tab has no title', async () => {
     const noTitle = [{ id: 5, title: '', url: 'https://notitle.com/', favIconUrl: '' }];
-    mockQuery
-      .mockResolvedValueOnce(noTitle)
-      .mockResolvedValueOnce([noTitle[0]]);
+    mockQuery.mockResolvedValueOnce(noTitle).mockResolvedValueOnce([noTitle[0]]);
     document.getElementById('mode-multi').click();
     await new Promise((r) => setTimeout(r, 50));
 
@@ -221,10 +217,15 @@ describe('popup — multi-page mode', () => {
   });
 
   it('renders an img for tabs with a favIconUrl', async () => {
-    const withIcon = [{ id: 4, title: 'Icon Tab', url: 'https://icon.com/', favIconUrl: 'https://icon.com/icon.png' }];
-    mockQuery
-      .mockResolvedValueOnce(withIcon)
-      .mockResolvedValueOnce([withIcon[0]]);
+    const withIcon = [
+      {
+        id: 4,
+        title: 'Icon Tab',
+        url: 'https://icon.com/',
+        favIconUrl: 'https://icon.com/icon.png',
+      },
+    ];
+    mockQuery.mockResolvedValueOnce(withIcon).mockResolvedValueOnce([withIcon[0]]);
     document.getElementById('mode-multi').click();
     await new Promise((r) => setTimeout(r, 50));
 
@@ -334,7 +335,7 @@ describe('popup — multi-page mode', () => {
   it('opens in multi mode automatically when multiple tabs are highlighted', async () => {
     mockQuery
       .mockResolvedValueOnce([TABS[0], TABS[1]]) // initial highlighted check → 2 tabs
-      .mockResolvedValueOnce(TABS)                // allTabs in renderTabList
+      .mockResolvedValueOnce(TABS) // allTabs in renderTabList
       .mockResolvedValueOnce([TABS[0], TABS[1]]); // highlightedTabs in renderTabList
     await setupDOM();
     await new Promise((r) => setTimeout(r, 50));

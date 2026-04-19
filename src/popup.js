@@ -1,20 +1,26 @@
-import { RTL_LOCALES, RESTRICTED, MSG_GET_MARKDOWN, FETCH_TIMEOUT_MS } from './constants.js';
+import {
+  RTL_LOCALES,
+  RESTRICTED,
+  MSG_GET_MARKDOWN,
+  FETCH_TIMEOUT_MS,
+} from './constants.js';
 
 // Wrapper so callers don't need to pass undefined explicitly when there are no
 // substitutions — browser.i18n.getMessage treats an empty array differently
 // from undefined in some Firefox versions.
-const i18n = (key, ...subs) => browser.i18n.getMessage(key, subs.length ? subs : undefined);
+const i18n = (key, ...subs) =>
+  browser.i18n.getMessage(key, subs.length ? subs : undefined);
 
 if (RTL_LOCALES.includes(browser.i18n.getUILanguage().split('-')[0])) {
   document.documentElement.setAttribute('dir', 'rtl');
 }
 
 // Populate all static labels from the active locale.
-document.getElementById('title').textContent        = i18n('popupTitle');
-document.getElementById('mode-single').textContent  = i18n('modeSingle');
-document.getElementById('mode-multi').textContent   = i18n('modeMultiple');
-document.getElementById('copy').textContent         = i18n('copyButton');
-document.getElementById('select-all').textContent   = i18n('selectAll');
+document.getElementById('title').textContent = i18n('popupTitle');
+document.getElementById('mode-single').textContent = i18n('modeSingle');
+document.getElementById('mode-multi').textContent = i18n('modeMultiple');
+document.getElementById('copy').textContent = i18n('copyButton');
+document.getElementById('select-all').textContent = i18n('selectAll');
 document.getElementById('deselect-all').textContent = i18n('deselectAll');
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -31,7 +37,10 @@ async function fetchMarkdown(tabId) {
     setTimeout(() => reject(new Error('timeout')), FETCH_TIMEOUT_MS)
   );
   const fetchPromise = (async () => {
-    await browser.scripting.executeScript({ target: { tabId }, files: ['dist/content.js'] });
+    await browser.scripting.executeScript({
+      target: { tabId },
+      files: ['dist/content.js'],
+    });
     const response = await browser.tabs.sendMessage(tabId, { type: MSG_GET_MARKDOWN });
     if (typeof response?.markdown !== 'string') throw new Error('invalid response');
     return response.markdown;
@@ -50,7 +59,10 @@ function setBtn(btn, state, label, resetLabel) {
   btn.textContent = label;
   clearTimeout(resetTimers.get(btn));
   if (resetLabel !== undefined) {
-    resetTimers.set(btn, setTimeout(() => setBtn(btn, '', resetLabel), 2000));
+    resetTimers.set(
+      btn,
+      setTimeout(() => setBtn(btn, '', resetLabel), 2000)
+    );
   }
 }
 
@@ -78,9 +90,8 @@ function updateCopyMultiBtn() {
   const checked = document.querySelectorAll('#tab-list input:checked');
   const n = checked.length;
   copyMultiBtn.disabled = n === 0;
-  copyMultiBtn.textContent = n > 0
-    ? i18n('copySelected', String(n))
-    : i18n('noTabsSelected');
+  copyMultiBtn.textContent =
+    n > 0 ? i18n('copySelected', String(n)) : i18n('noTabsSelected');
 }
 
 async function renderTabList() {
@@ -155,18 +166,22 @@ copyMultiBtn.addEventListener('click', async () => {
   try {
     // Use allSettled so a single failing tab doesn't abort the whole batch.
     const results = await Promise.allSettled(tabIds.map((id) => fetchMarkdown(id)));
-    const pages = results
-      .filter((r) => r.status === 'fulfilled')
-      .map((r) => r.value);
+    const pages = results.filter((r) => r.status === 'fulfilled').map((r) => r.value);
 
     if (pages.length === 0) throw new Error('all tabs failed');
 
     await navigator.clipboard.writeText(pages.join('\n\n---\n\n'));
 
-    const successLabel = pages.length < tabIds.length
-      ? i18n('copiedPartial', String(pages.length), String(tabIds.length))
-      : i18n('copied');
-    setBtn(copyMultiBtn, 'success', successLabel, i18n('copySelected', String(tabIds.length)));
+    const successLabel =
+      pages.length < tabIds.length
+        ? i18n('copiedPartial', String(pages.length), String(tabIds.length))
+        : i18n('copied');
+    setBtn(
+      copyMultiBtn,
+      'success',
+      successLabel,
+      i18n('copySelected', String(tabIds.length))
+    );
   } catch {
     setBtn(copyMultiBtn, 'error', i18n('copyError'), i18n('noTabsSelected'));
   } finally {
@@ -176,23 +191,23 @@ copyMultiBtn.addEventListener('click', async () => {
 
 // ── Mode toggle ───────────────────────────────────────────────────────────────
 
-const panelSingle   = document.getElementById('panel-single');
-const panelMulti    = document.getElementById('panel-multi');
+const panelSingle = document.getElementById('panel-single');
+const panelMulti = document.getElementById('panel-multi');
 const modeSingleBtn = document.getElementById('mode-single');
-const modeMultiBtn  = document.getElementById('mode-multi');
+const modeMultiBtn = document.getElementById('mode-multi');
 
 function switchToSingle() {
   modeSingleBtn.classList.add('active');
   modeMultiBtn.classList.remove('active');
   panelSingle.hidden = false;
-  panelMulti.hidden  = true;
+  panelMulti.hidden = true;
 }
 
 function switchToMulti() {
   modeMultiBtn.classList.add('active');
   modeSingleBtn.classList.remove('active');
   panelSingle.hidden = true;
-  panelMulti.hidden  = false;
+  panelMulti.hidden = false;
   renderTabList();
 }
 

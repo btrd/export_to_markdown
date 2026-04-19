@@ -1,32 +1,44 @@
 {
-  "extensionName":        { "message": "Export to Markdown" },
+  "extensionName": { "message": "Export to Markdown" },
   "extensionDescription": { "message": "Export any web page to Markdown" },
-  "popupTitle":           { "message": "Export to Markdown" },
-  "copyButton":           { "message": "Copy to clipboard" },
-  "copying":              { "message": "Copying…" },
-  "copied":               { "message": "✓ Copied!" },
-  "copyError":            { "message": "✗ Error" },
-  "modeSingle":           { "message": "Current page" },
-  "modeMultiple":         { "message": "Multiple pages" },
-  "selectAll":            { "message": "Select all" },
-  "deselectAll":          { "message": "Deselect all" },
-  "copySelected":         { "message": "Copy $COUNT$ page(s)", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "No tabs selected" },
-  "copiedPartial":        { "message": "✓ $COPIED$/$TOTAL$", "placeholders": { "copied": { "content": "$1" }, "total": { "content": "$2" } } },
+  "popupTitle": { "message": "Export to Markdown" },
+  "copyButton": { "message": "Copy to clipboard" },
+  "copying": { "message": "Copying…" },
+  "copied": { "message": "✓ Copied!" },
+  "copyError": { "message": "✗ Error" },
+  "modeSingle": { "message": "Current page" },
+  "modeMultiple": { "message": "Multiple pages" },
+  "selectAll": { "message": "Select all" },
+  "deselectAll": { "message": "Deselect all" },
+  "copySelected": {
+    "message": "Copy $COUNT$ page(s)",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "noTabsSelected": { "message": "No tabs selected" },
+  "copiedPartial": {
+    "message": "✓ $COPIED$/$TOTAL$",
+    "placeholders": { "copied": { "content": "$1" }, "total": { "content": "$2" } }
+  },
 
-  "optionsTitle":         { "message": "Export to Markdown — Settings" },
-  "optionsSubtitle":      { "message": "Define CSS selectors to strip from specific sites before exporting." },
-  "optionsFormHeading":   { "message": "Add / edit rule" },
-  "optionsRulesHeading":  { "message": "Existing rules" },
+  "optionsTitle": { "message": "Export to Markdown — Settings" },
+  "optionsSubtitle": {
+    "message": "Define CSS selectors to strip from specific sites before exporting."
+  },
+  "optionsFormHeading": { "message": "Add / edit rule" },
+  "optionsRulesHeading": { "message": "Existing rules" },
   "optionsLabelHostname": { "message": "Hostname (e.g. example.com)" },
-  "optionsLabelSelect":   { "message": "Select — CSS selector for the main content root (optional)" },
-  "optionsLabelHide":     { "message": "Hide — CSS selectors to strip, one per line" },
-  "optionsNoRules":       { "message": "No rules defined." },
-  "optionsSaveRule":      { "message": "Save rule" },
-  "optionsUpdateRule":    { "message": "Update rule" },
-  "optionsEdit":          { "message": "Edit" },
-  "optionsDelete":        { "message": "Delete" },
-  "optionsCancel":        { "message": "Cancel" },
-  "optionsErrorHostname": { "message": "Invalid hostname — use a plain hostname like example.com" },
+  "optionsLabelSelect": {
+    "message": "Select — CSS selector for the main content root (optional)"
+  },
+  "optionsLabelHide": { "message": "Hide — CSS selectors to strip, one per line" },
+  "optionsNoRules": { "message": "No rules defined." },
+  "optionsSaveRule": { "message": "Save rule" },
+  "optionsUpdateRule": { "message": "Update rule" },
+  "optionsEdit": { "message": "Edit" },
+  "optionsDelete": { "message": "Delete" },
+  "optionsCancel": { "message": "Cancel" },
+  "optionsErrorHostname": {
+    "message": "Invalid hostname — use a plain hostname like example.com"
+  },
   "optionsErrorSelector": { "message": "Invalid CSS selector" }
 }

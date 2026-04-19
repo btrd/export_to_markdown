@@ -1,31 +1,40 @@
 {
-  "extensionName":        { "message": "Exportar a Markdown" },
+  "extensionName": { "message": "Exportar a Markdown" },
   "extensionDescription": { "message": "Exporta cualquier página web a Markdown" },
-  "popupTitle":           { "message": "Exportar a Markdown" },
-  "copyButton":           { "message": "Copiar al portapapeles" },
-  "copying":              { "message": "Copiando…" },
-  "copied":               { "message": "✓ ¡Copiado!" },
-  "copyError":            { "message": "✗ Error" },
-  "modeSingle":           { "message": "Página actual" },
-  "modeMultiple":         { "message": "Varias páginas" },
-  "selectAll":            { "message": "Seleccionar todo" },
-  "deselectAll":          { "message": "Deseleccionar todo" },
-  "copySelected":         { "message": "Copiar $COUNT$ página(s)", "placeholders": { "count": { "content": "$1" } } },
-  "noTabsSelected":       { "message": "Ninguna pestaña seleccionada" },
+  "popupTitle": { "message": "Exportar a Markdown" },
+  "copyButton": { "message": "Copiar al portapapeles" },
+  "copying": { "message": "Copiando…" },
+  "copied": { "message": "✓ ¡Copiado!" },
+  "copyError": { "message": "✗ Error" },
+  "modeSingle": { "message": "Página actual" },
+  "modeMultiple": { "message": "Varias páginas" },
+  "selectAll": { "message": "Seleccionar todo" },
+  "deselectAll": { "message": "Deseleccionar todo" },
+  "copySelected": {
+    "message": "Copiar $COUNT$ página(s)",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "noTabsSelected": { "message": "Ninguna pestaña seleccionada" },
 
-  "optionsTitle":         { "message": "Exportar a Markdown — Configuración" },
-  "optionsSubtitle":      { "message": "Define selectores CSS para eliminar elementos de sitios específicos antes de exportar." },
-  "optionsFormHeading":   { "message": "Agregar / editar regla" },
-  "optionsRulesHeading":  { "message": "Reglas existentes" },
+  "optionsTitle": { "message": "Exportar a Markdown — Configuración" },
+  "optionsSubtitle": {
+    "message": "Define selectores CSS para eliminar elementos de sitios específicos antes de exportar."
+  },
+  "optionsFormHeading": { "message": "Agregar / editar regla" },
+  "optionsRulesHeading": { "message": "Reglas existentes" },
   "optionsLabelHostname": { "message": "Nombre de host (p. ej. example.com)" },
-  "optionsLabelSelect":   { "message": "Seleccionar — selector CSS para el contenido principal (opcional)" },
-  "optionsLabelHide":     { "message": "Ocultar — selectores CSS a eliminar, uno por línea" },
-  "optionsNoRules":       { "message": "No hay reglas definidas." },
-  "optionsSaveRule":      { "message": "Guardar regla" },
-  "optionsUpdateRule":    { "message": "Actualizar regla" },
-  "optionsEdit":          { "message": "Editar" },
-  "optionsDelete":        { "message": "Eliminar" },
-  "optionsCancel":        { "message": "Cancelar" },
-  "optionsErrorHostname": { "message": "Nombre de host inválido — use un nombre de host simple como example.com" },
+  "optionsLabelSelect": {
+    "message": "Seleccionar — selector CSS para el contenido principal (opcional)"
+  },
+  "optionsLabelHide": { "message": "Ocultar — selectores CSS a eliminar, uno por línea" },
+  "optionsNoRules": { "message": "No hay reglas definidas." },
+  "optionsSaveRule": { "message": "Guardar regla" },
+  "optionsUpdateRule": { "message": "Actualizar regla" },
+  "optionsEdit": { "message": "Editar" },
+  "optionsDelete": { "message": "Eliminar" },
+  "optionsCancel": { "message": "Cancelar" },
+  "optionsErrorHostname": {
+    "message": "Nombre de host inválido — use un nombre de host simple como example.com"
+  },
   "optionsErrorSelector": { "message": "Selector CSS inválido" }
 }

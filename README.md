@@ -23,11 +23,11 @@ Open the extension's **Settings** page (right-click the toolbar icon → Manage 
 
 Each rule has:
 
-| Field | Description |
-|---|---|
-| **Hostname** | Base hostname, e.g. `leboncoin.fr`. Matches subdomains automatically (`www.leboncoin.fr` ✓). |
-| **Select** *(optional)* | CSS selector for the content root. Falls back to `article ?? body` if omitted or no match. |
-| **Hide** | CSS selectors (one per line) for elements to strip before converting. |
+| Field                   | Description                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------- |
+| **Hostname**            | Base hostname, e.g. `leboncoin.fr`. Matches subdomains automatically (`www.leboncoin.fr` ✓). |
+| **Select** _(optional)_ | CSS selector for the content root. Falls back to `article ?? body` if omitted or no match.   |
+| **Hide**                | CSS selectors (one per line) for elements to strip before converting.                        |
 
 Example — strip similar-ad sidebars on leboncoin:
 
@@ -129,17 +129,17 @@ amo-metadata.json
 
 ## CI/CD
 
-| Workflow | Trigger | Steps |
-|---|---|---|
-| CI | push / PR on `main` | lint, test |
-| Release | `v*` tag push | lint, test, sign XPI via AMO API, create GitHub Release |
+| Workflow | Trigger             | Steps                                                   |
+| -------- | ------------------- | ------------------------------------------------------- |
+| CI       | push / PR on `main` | lint, test                                              |
+| Release  | `v*` tag push       | lint, test, sign XPI via AMO API, create GitHub Release |
 
 The release workflow requires two repository secrets:
 
-| Secret | Where to get it |
-|---|---|
-| `WEB_EXT_API_KEY` | [addons.mozilla.org developer hub](https://addons.mozilla.org/developers/) → API credentials |
-| `WEB_EXT_API_SECRET` | same |
+| Secret               | Where to get it                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------- |
+| `WEB_EXT_API_KEY`    | [addons.mozilla.org developer hub](https://addons.mozilla.org/developers/) → API credentials |
+| `WEB_EXT_API_SECRET` | same                                                                                         |
 
 ## Architecture
 

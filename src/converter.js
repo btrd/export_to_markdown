@@ -10,8 +10,7 @@ const td = new TurndownService({
 // instead of indented blocks, and the language hint is preserved from
 // the CSS class (e.g. class="language-js" → ```js).
 td.addRule('fencedCodeBlock', {
-  filter: (node) =>
-    node.nodeName === 'PRE' && node.firstChild?.nodeName === 'CODE',
+  filter: (node) => node.nodeName === 'PRE' && node.firstChild?.nodeName === 'CODE',
   replacement: (_, node) => {
     const lang =
       node.firstChild.getAttribute('class')?.match(/language-(\S+)/)?.[1] ?? '';

@@ -1,175 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Export to Markdown — Settings</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export to Markdown — Settings</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 680px;
-      margin: 32px auto;
-      padding: 0 16px;
-      color: #333;
-      background: #fff;
-    }
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 680px;
+        margin: 32px auto;
+        padding: 0 16px;
+        color: #333;
+        background: #fff;
+      }
 
-    h1 { font-size: 20px; margin: 0 0 6px; }
-    p.subtitle { color: #666; font-size: 13px; margin: 0 0 28px; }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 6px;
+      }
+      p.subtitle {
+        color: #666;
+        font-size: 13px;
+        margin: 0 0 28px;
+      }
 
-    h2 { font-size: 14px; margin: 0 0 12px; }
+      h2 {
+        font-size: 14px;
+        margin: 0 0 12px;
+      }
 
-    /* Form */
-    .form-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 28px;
-    }
-    .form-row { margin-bottom: 12px; }
-    label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #555; }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 7px 10px;
-      font-size: 13px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: monospace;
-    }
-    textarea { height: 90px; resize: vertical; }
-    .form-actions { display: flex; gap: 8px; }
+      /* Form */
+      .form-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 28px;
+      }
+      .form-row {
+        margin-bottom: 12px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #555;
+      }
+      input[type='text'],
+      textarea {
+        width: 100%;
+        padding: 7px 10px;
+        font-size: 13px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: monospace;
+      }
+      textarea {
+        height: 90px;
+        resize: vertical;
+      }
+      .form-actions {
+        display: flex;
+        gap: 8px;
+      }
 
-    button {
-      padding: 7px 14px;
-      font-size: 13px;
-      cursor: pointer;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      background: #f5f5f5;
-    }
-    button.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
-    button.danger  { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
-    button:hover { filter: brightness(0.95); }
+      button {
+        padding: 7px 14px;
+        font-size: 13px;
+        cursor: pointer;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background: #f5f5f5;
+      }
+      button.primary {
+        background: #1a73e8;
+        border-color: #1a73e8;
+        color: #fff;
+      }
+      button.danger {
+        background: #fce8e6;
+        border-color: #ea4335;
+        color: #c5221f;
+      }
+      button:hover {
+        filter: brightness(0.95);
+      }
 
-    /* Rules list */
-    #rules-list { display: flex; flex-direction: column; gap: 10px; }
+      /* Rules list */
+      #rules-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
 
-    .rule-card {
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 12px 14px;
-    }
-    .rule-card .rule-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .rule-hostname {
-      font-weight: 600;
-      font-size: 13px;
-      font-family: monospace;
-    }
-    .rule-card .rule-actions { display: flex; gap: 6px; }
-    .rule-selectors {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .rule-selectors li {
-      font-family: monospace;
-      font-size: 12px;
-      color: #555;
-      background: #f5f5f5;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
+      .rule-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 14px;
+      }
+      .rule-card .rule-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      .rule-hostname {
+        font-weight: 600;
+        font-size: 13px;
+        font-family: monospace;
+      }
+      .rule-card .rule-actions {
+        display: flex;
+        gap: 6px;
+      }
+      .rule-selectors {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .rule-selectors li {
+        font-family: monospace;
+        font-size: 12px;
+        color: #555;
+        background: #f5f5f5;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
 
-    .rule-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-    .rule-type {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 1px 6px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-    .rule-type.select { background: #e8f0fe; color: #1a73e8; }
-    .rule-type.hide   { background: #fce8e6; color: #c5221f; }
-    .rule-row code {
-      font-family: monospace;
-      font-size: 12px;
-      color: #555;
-      word-break: break-all;
-    }
+      .rule-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+      .rule-type {
+        font-size: 10px;
+        font-weight: 700;
+        padding: 1px 6px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+      .rule-type.select {
+        background: #e8f0fe;
+        color: #1a73e8;
+      }
+      .rule-type.hide {
+        background: #fce8e6;
+        color: #c5221f;
+      }
+      .rule-row code {
+        font-family: monospace;
+        font-size: 12px;
+        color: #555;
+        word-break: break-all;
+      }
 
-    .empty { color: #999; font-size: 13px; text-align: center; padding: 20px; }
+      .empty {
+        color: #999;
+        font-size: 13px;
+        text-align: center;
+        padding: 20px;
+      }
 
-    .form-error {
-      color: #c5221f;
-      font-size: 12px;
-      margin: 0 0 10px;
-      padding: 6px 10px;
-      background: #fce8e6;
-      border: 1px solid #ea4335;
-      border-radius: 6px;
-    }
+      .form-error {
+        color: #c5221f;
+        font-size: 12px;
+        margin: 0 0 10px;
+        padding: 6px 10px;
+        background: #fce8e6;
+        border: 1px solid #ea4335;
+        border-radius: 6px;
+      }
 
-    @media (prefers-color-scheme: dark) {
-      body { background: #1e1e1e; color: #e8e8e8; }
-      p.subtitle { color: #aaa; }
-      .form-card { border-color: #444; }
-      input[type="text"], textarea { background: #2a2a2a; border-color: #444; color: #e8e8e8; }
-      button { background: #2a2a2a; border-color: #444; color: #e8e8e8; }
-      button.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
-      button.danger  { background: #3d1a1a; border-color: #ea4335; color: #f28b82; }
-      .rule-card { border-color: #444; }
-      .rule-type.select { background: #1a2a4a; color: #5ba3f5; }
-      .rule-type.hide   { background: #3d1a1a; color: #f28b82; }
-      .rule-row code { color: #aaa; }
-      label { color: #aaa; }
-      .form-error { background: #3d1a1a; border-color: #ea4335; color: #f28b82; }
-    }
-  </style>
-</head>
-<body>
-  <h1 id="options-title"></h1>
-  <p id="options-subtitle" class="subtitle"></p>
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #1e1e1e;
+          color: #e8e8e8;
+        }
+        p.subtitle {
+          color: #aaa;
+        }
+        .form-card {
+          border-color: #444;
+        }
+        input[type='text'],
+        textarea {
+          background: #2a2a2a;
+          border-color: #444;
+          color: #e8e8e8;
+        }
+        button {
+          background: #2a2a2a;
+          border-color: #444;
+          color: #e8e8e8;
+        }
+        button.primary {
+          background: #1a73e8;
+          border-color: #1a73e8;
+          color: #fff;
+        }
+        button.danger {
+          background: #3d1a1a;
+          border-color: #ea4335;
+          color: #f28b82;
+        }
+        .rule-card {
+          border-color: #444;
+        }
+        .rule-type.select {
+          background: #1a2a4a;
+          color: #5ba3f5;
+        }
+        .rule-type.hide {
+          background: #3d1a1a;
+          color: #f28b82;
+        }
+        .rule-row code {
+          color: #aaa;
+        }
+        label {
+          color: #aaa;
+        }
+        .form-error {
+          background: #3d1a1a;
+          border-color: #ea4335;
+          color: #f28b82;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="options-title"></h1>
+    <p id="options-subtitle" class="subtitle"></p>
 
-  <h2 id="options-form-heading"></h2>
-  <div class="form-card">
-    <div class="form-row">
-      <label id="options-label-hostname" for="input-hostname"></label>
-      <input type="text" id="input-hostname" placeholder="example.com" spellcheck="false" />
+    <h2 id="options-form-heading"></h2>
+    <div class="form-card">
+      <div class="form-row">
+        <label id="options-label-hostname" for="input-hostname"></label>
+        <input
+          type="text"
+          id="input-hostname"
+          placeholder="example.com"
+          spellcheck="false"
+        />
+      </div>
+      <div class="form-row">
+        <label id="options-label-select" for="input-select"></label>
+        <input
+          type="text"
+          id="input-select"
+          placeholder="[data-qa-id='adview-body']"
+          spellcheck="false"
+        />
+      </div>
+      <div class="form-row">
+        <label id="options-label-hide" for="input-hide"></label>
+        <textarea
+          id="input-hide"
+          placeholder="[data-qa-id='adview-similar-ads']&#10;.sidebar"
+        ></textarea>
+      </div>
+      <p id="form-error" class="form-error" hidden></p>
+      <div class="form-actions">
+        <button class="primary" id="btn-save"></button>
+        <button id="btn-cancel" hidden></button>
+      </div>
     </div>
-    <div class="form-row">
-      <label id="options-label-select" for="input-select"></label>
-      <input type="text" id="input-select" placeholder="[data-qa-id='adview-body']" spellcheck="false" />
-    </div>
-    <div class="form-row">
-      <label id="options-label-hide" for="input-hide"></label>
-      <textarea id="input-hide" placeholder="[data-qa-id='adview-similar-ads']&#10;.sidebar"></textarea>
-    </div>
-    <p id="form-error" class="form-error" hidden></p>
-    <div class="form-actions">
-      <button class="primary" id="btn-save"></button>
-      <button id="btn-cancel" hidden></button>
-    </div>
-  </div>
 
-  <h2 id="options-rules-heading"></h2>
-  <div id="rules-list"></div>
+    <h2 id="options-rules-heading"></h2>
+    <div id="rules-list"></div>
 
-  <script src="dist/options.js"></script>
-</body>
+    <script src="dist/options.js"></script>
+  </body>
 </html>

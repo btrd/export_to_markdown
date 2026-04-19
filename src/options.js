@@ -1,21 +1,23 @@
 const i18n = (key) => browser.i18n.getMessage(key);
 
 const hostnameInput = document.getElementById('input-hostname');
-const selectInput   = document.getElementById('input-select');
-const hideInput     = document.getElementById('input-hide');
-const saveBtn       = document.getElementById('btn-save');
-const cancelBtn     = document.getElementById('btn-cancel');
-const rulesList     = document.getElementById('rules-list');
-const formError     = document.getElementById('form-error');
+const selectInput = document.getElementById('input-select');
+const hideInput = document.getElementById('input-hide');
+const saveBtn = document.getElementById('btn-save');
+const cancelBtn = document.getElementById('btn-cancel');
+const rulesList = document.getElementById('rules-list');
+const formError = document.getElementById('form-error');
 
 // Populate static labels from the active locale.
-document.getElementById('options-title').textContent         = i18n('optionsTitle');
-document.getElementById('options-subtitle').textContent      = i18n('optionsSubtitle');
-document.getElementById('options-form-heading').textContent  = i18n('optionsFormHeading');
-document.getElementById('options-rules-heading').textContent = i18n('optionsRulesHeading');
-document.getElementById('options-label-hostname').textContent = i18n('optionsLabelHostname');
-document.getElementById('options-label-select').textContent  = i18n('optionsLabelSelect');
-document.getElementById('options-label-hide').textContent    = i18n('optionsLabelHide');
+document.getElementById('options-title').textContent = i18n('optionsTitle');
+document.getElementById('options-subtitle').textContent = i18n('optionsSubtitle');
+document.getElementById('options-form-heading').textContent = i18n('optionsFormHeading');
+document.getElementById('options-rules-heading').textContent =
+  i18n('optionsRulesHeading');
+document.getElementById('options-label-hostname').textContent =
+  i18n('optionsLabelHostname');
+document.getElementById('options-label-select').textContent = i18n('optionsLabelSelect');
+document.getElementById('options-label-hide').textContent = i18n('optionsLabelHide');
 cancelBtn.textContent = i18n('optionsCancel');
 
 let editingHostname = null;
@@ -40,10 +42,12 @@ function clearError() {
 }
 
 function isValidHostname(hostname) {
-  return hostname.length > 0
-    && !hostname.includes(' ')
-    && !hostname.includes('/')
-    && !hostname.includes(':');
+  return (
+    hostname.length > 0 &&
+    !hostname.includes(' ') &&
+    !hostname.includes('/') &&
+    !hostname.includes(':')
+  );
 }
 
 function isValidSelector(selector) {
@@ -146,8 +150,11 @@ saveBtn.addEventListener('click', async () => {
   clearError();
 
   const hostname = hostnameInput.value.trim().toLowerCase();
-  const select   = selectInput.value.trim() || undefined;
-  const hide     = hideInput.value.split('\n').map((s) => s.trim()).filter(Boolean);
+  const select = selectInput.value.trim() || undefined;
+  const hide = hideInput.value
+    .split('\n')
+    .map((s) => s.trim())
+    .filter(Boolean);
 
   if (!hostname || (!select && hide.length === 0)) return;
 

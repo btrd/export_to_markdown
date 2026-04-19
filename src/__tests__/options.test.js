@@ -37,13 +37,27 @@ async function setupDOM(rules = {}) {
   await new Promise((r) => setTimeout(r, 10));
 }
 
-function hostnameInput() { return document.getElementById('input-hostname'); }
-function selectInput()   { return document.getElementById('input-select'); }
-function hideInput()     { return document.getElementById('input-hide'); }
-function saveBtn()       { return document.getElementById('btn-save'); }
-function cancelBtn()     { return document.getElementById('btn-cancel'); }
-function formError()     { return document.getElementById('form-error'); }
-function rulesList()     { return document.getElementById('rules-list'); }
+function hostnameInput() {
+  return document.getElementById('input-hostname');
+}
+function selectInput() {
+  return document.getElementById('input-select');
+}
+function hideInput() {
+  return document.getElementById('input-hide');
+}
+function saveBtn() {
+  return document.getElementById('btn-save');
+}
+function cancelBtn() {
+  return document.getElementById('btn-cancel');
+}
+function formError() {
+  return document.getElementById('form-error');
+}
+function rulesList() {
+  return document.getElementById('rules-list');
+}
 
 async function clickSave() {
   saveBtn().click();
@@ -59,7 +73,9 @@ describe('options — initialization', () => {
 
   it('populates static labels from i18n', () => {
     expect(document.getElementById('options-title').textContent).toBe('optionsTitle');
-    expect(document.getElementById('options-subtitle').textContent).toBe('optionsSubtitle');
+    expect(document.getElementById('options-subtitle').textContent).toBe(
+      'optionsSubtitle'
+    );
     expect(document.getElementById('btn-save').textContent).toBe('optionsSaveRule');
   });
 
@@ -89,7 +105,7 @@ describe('options — renderRules', () => {
   it('renders a card for each rule', async () => {
     await setupDOM({
       'example.com': { select: '.content', hide: ['.ads'] },
-      'other.org':   { hide: ['.sidebar'] },
+      'other.org': { hide: ['.sidebar'] },
     });
     expect(rulesList().querySelectorAll('.rule-card').length).toBe(2);
   });
@@ -131,7 +147,9 @@ describe('options — delete rule', () => {
   });
 
   it('removes the card after clicking delete', async () => {
-    mockStorageGet.mockResolvedValue({ rules: { 'example.com': { select: '.content' } } });
+    mockStorageGet.mockResolvedValue({
+      rules: { 'example.com': { select: '.content' } },
+    });
     const deleteBtn = rulesList().querySelector('.btn-delete');
     deleteBtn.click();
     await new Promise((r) => setTimeout(r, 10));
