@@ -1,10 +1,15 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
-  "permissions": ["activeTab", "scripting", "clipboardWrite", "storage"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite",
+    "storage"
+  ],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
@@ -17,15 +22,31 @@
       "128": "icons/icon128-dark.png"
     },
     "theme_icons": [
-      { "light": "icons/icon48-light.png",  "dark": "icons/icon48-dark.png",  "size": 48  },
-      { "light": "icons/icon96-light.png",  "dark": "icons/icon96-dark.png",  "size": 96  },
-      { "light": "icons/icon128-light.png", "dark": "icons/icon128-dark.png", "size": 128 }
+      {
+        "light": "icons/icon48-light.png",
+        "dark": "icons/icon48-dark.png",
+        "size": 48
+      },
+      {
+        "light": "icons/icon96-light.png",
+        "dark": "icons/icon96-dark.png",
+        "size": 96
+      },
+      {
+        "light": "icons/icon128-light.png",
+        "dark": "icons/icon128-dark.png",
+        "size": 128
+      }
     ]
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["dist/content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/content.js"
+      ],
       "run_at": "document_idle"
     }
   ],
@@ -34,7 +55,9 @@
       "id": "export-to-markdown@jeanbertrand",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
-        "required": ["none"]
+        "required": [
+          "none"
+        ]
       }
     }
   }
