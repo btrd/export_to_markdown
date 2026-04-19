@@ -369,7 +369,7 @@ describe('options — save in edit mode', () => {
     expect(saved.rules['example.com'].hide).toEqual(['.new-ads']);
   });
 
-  it('removes the old hostname when renaming is not applicable (same hostname)', async () => {
+  it('does not create duplicate hostname keys when saving in edit mode', async () => {
     mockStorageGet.mockResolvedValue({ rules: INITIAL_RULES });
     selectInput().value = '.updated';
     hideInput().value = '';

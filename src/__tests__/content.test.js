@@ -42,10 +42,10 @@ describe('content script', () => {
     expect(response).toHaveProperty('markdown');
   });
 
-  it('passes stored rules to extractMarkdown', async () => {
+  it('does not throw when storage returns rules and still returns markdown', async () => {
     const rules = { 'example.com': { hide: ['nav'] } };
     mockStorageGet.mockResolvedValue({ rules });
     const response = await messageListener({ type: 'GET_MARKDOWN' });
-    expect(response.markdown).toBeDefined();
+    expect(typeof response.markdown).toBe('string');
   });
 });

@@ -131,6 +131,19 @@ describe('popup — single page mode', () => {
     vi.useRealTimers();
   });
 
+  it('resets copy button label after 2 seconds on error', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    mockExecuteScript.mockResolvedValue([]);
+    mockSendMessage.mockRejectedValue(new Error('denied'));
+
+    document.getElementById('copy').click();
+    await vi.runAllTimersAsync();
+
+    expect(document.getElementById('copy').textContent).toBe('copyButton');
+    expect(document.getElementById('copy').className).not.toContain('error');
+    vi.useRealTimers();
+  });
+
   it('sets dir=rtl for Arabic locale', async () => {
     mockGetUILanguage.mockReturnValue('ar');
     await setupDOM();
@@ -276,6 +289,23 @@ describe('popup — multi-page mode', () => {
     await new Promise((r) => setTimeout(r, 100));
 
     expect(document.getElementById('copy-multi').textContent).toBe('copyError');
+  });
+
+  it('resets copy-multi button label after 2 seconds', async () => {
+    await openMultiMode();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    mockExecuteScript.mockResolvedValue([]);
+    mockSendMessage
+      .mockResolvedValueOnce({ markdown: '# Page One' })
+      .mockResolvedValueOnce({ markdown: '# Page Two' });
+    mockWriteText.mockResolvedValue(undefined);
+
+    document.getElementById('copy-multi').click();
+    await vi.runAllTimersAsync();
+
+    expect(document.getElementById('copy-multi').textContent).toBe('copySelected(2)');
+    expect(document.getElementById('copy-multi').className).not.toContain('success');
+    vi.useRealTimers();
   });
 
   it('switches back to single panel', async () => {
