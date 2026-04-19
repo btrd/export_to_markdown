@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "build": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser",
     "watch": "esbuild src/content.js src/popup.js --bundle --outdir=dist --format=esm --platform=browser --watch",
@@ -10,7 +13,12 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "package": "yarn build && zip -r export-to-markdown.xpi manifest.json popup.html dist/ icons/ _locales/ --exclude '*.DS_Store'",
+    "ext:build": "yarn build && node node_modules/.bin/web-ext build",
+    "ext:lint": "node node_modules/.bin/web-ext lint",
+    "ext:run": "yarn build && node node_modules/.bin/web-ext run",
+    "ext:sign": "yarn build && node node_modules/.bin/web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
   },
   "dependencies": {
     "turndown": "^7.2.4"
@@ -23,6 +31,7 @@
     "eslint-plugin-jsonc": "^3.1.2",
     "globals": "^17.5.0",
     "jsdom": "^29.0.2",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.4",
+    "web-ext": "^10.1.0"
   }
 }

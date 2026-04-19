@@ -1,6 +1,7 @@
 node_modules/
 dist/
 coverage/
+web-ext-artifacts/
 *.xpi
 *.zip
 .DS_Store
