@@ -18,7 +18,9 @@
     "ext:build": "yarn build && web-ext build",
     "ext:lint": "web-ext lint",
     "ext:run": "yarn build && web-ext run",
-    "ext:sign": "yarn build && web-ext sign --channel=listed --amo-metadata=amo-metadata.json --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
+    "ext:sign": "yarn build && web-ext sign --channel=listed --amo-metadata=amo-metadata.json --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
+    "version": "node -e \"const fs=require('fs');const m=JSON.parse(fs.readFileSync('manifest.json'));m.version=process.env.npm_new_version;fs.writeFileSync('manifest.json',JSON.stringify(m,null,2)+'\\n');\" && git add manifest.json",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "turndown": "^7.2.4"
