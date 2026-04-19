@@ -1,9 +1,10 @@
+import { RTL_LOCALES, RESTRICTED, MSG_GET_MARKDOWN, FETCH_TIMEOUT_MS } from './constants.js';
+
 // Wrapper so callers don't need to pass undefined explicitly when there are no
 // substitutions — browser.i18n.getMessage treats an empty array differently
 // from undefined in some Firefox versions.
 const i18n = (key, ...subs) => browser.i18n.getMessage(key, subs.length ? subs : undefined);
 
-const RTL_LOCALES = ['ar', 'he', 'fa', 'ur'];
 if (RTL_LOCALES.includes(browser.i18n.getUILanguage().split('-')[0])) {
   document.documentElement.setAttribute('dir', 'rtl');
 }
@@ -18,20 +19,24 @@ document.getElementById('deselect-all').textContent = i18n('deselectAll');
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-// browser:, about:, moz-extension: etc. cannot be scripted — attempting to
-// inject content.js into them throws a permission error.
-const RESTRICTED = /^(about:|moz-extension:|chrome:|data:|javascript:)/;
-
 function isRestricted(url) {
   return !url || RESTRICTED.test(url);
 }
 
 // Injects the content script if not already present, then asks it to convert
 // the page. executeScript is idempotent — re-injecting is safe.
+// Rejects if the content script does not respond within FETCH_TIMEOUT_MS.
 async function fetchMarkdown(tabId) {
-  await browser.scripting.executeScript({ target: { tabId }, files: ['dist/content.js'] });
-  const response = await browser.tabs.sendMessage(tabId, { type: 'GET_MARKDOWN' });
-  return response?.markdown ?? '';
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error('timeout')), FETCH_TIMEOUT_MS)
+  );
+  const fetchPromise = (async () => {
+    await browser.scripting.executeScript({ target: { tabId }, files: ['dist/content.js'] });
+    const response = await browser.tabs.sendMessage(tabId, { type: MSG_GET_MARKDOWN });
+    if (typeof response?.markdown !== 'string') throw new Error('invalid response');
+    return response.markdown;
+  })();
+  return Promise.race([fetchPromise, timeoutPromise]);
 }
 
 // ── Single-page mode ─────────────────────────────────────────────────────────
@@ -157,7 +162,11 @@ copyMultiBtn.addEventListener('click', async () => {
     if (pages.length === 0) throw new Error('all tabs failed');
 
     await navigator.clipboard.writeText(pages.join('\n\n---\n\n'));
-    setBtn(copyMultiBtn, 'success', i18n('copied'), i18n('copySelected', String(tabIds.length)));
+
+    const successLabel = pages.length < tabIds.length
+      ? i18n('copiedPartial', String(pages.length), String(tabIds.length))
+      : i18n('copied');
+    setBtn(copyMultiBtn, 'success', successLabel, i18n('copySelected', String(tabIds.length)));
   } catch {
     setBtn(copyMultiBtn, 'error', i18n('copyError'), i18n('noTabsSelected'));
   } finally {

@@ -50,6 +50,9 @@
       "run_at": "document_idle"
     }
   ],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'"
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "export-to-markdown@jeanbertrand",

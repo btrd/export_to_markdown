@@ -12,6 +12,7 @@
   "deselectAll":          { "message": "Deselect all" },
   "copySelected":         { "message": "Copy $COUNT$ page(s)", "placeholders": { "count": { "content": "$1" } } },
   "noTabsSelected":       { "message": "No tabs selected" },
+  "copiedPartial":        { "message": "✓ $COPIED$/$TOTAL$", "placeholders": { "copied": { "content": "$1" }, "total": { "content": "$2" } } },
 
   "optionsTitle":         { "message": "Export to Markdown — Settings" },
   "optionsSubtitle":      { "message": "Define CSS selectors to strip from specific sites before exporting." },

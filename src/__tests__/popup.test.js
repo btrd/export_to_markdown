@@ -82,16 +82,32 @@ describe('popup — single page mode', () => {
     expect(btn.disabled).toBe(false);
   });
 
-  it('copies empty string when sendMessage returns null', async () => {
+  it('shows error state when sendMessage returns null', async () => {
     mockExecuteScript.mockResolvedValue([]);
     mockSendMessage.mockResolvedValue(null);
-    mockWriteText.mockResolvedValue(undefined);
 
     document.getElementById('copy').click();
     await new Promise((r) => setTimeout(r, 50));
 
-    expect(mockWriteText).toHaveBeenCalledWith('');
-    expect(document.getElementById('copy').textContent).toBe('copied');
+    const btn = document.getElementById('copy');
+    expect(btn.textContent).toBe('copyError');
+    expect(btn.className).toContain('error');
+    expect(mockWriteText).not.toHaveBeenCalled();
+  });
+
+  it('shows error state when content script times out', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    mockExecuteScript.mockResolvedValue([]);
+    mockSendMessage.mockReturnValue(new Promise(() => {}));
+
+    document.getElementById('copy').click();
+    await vi.advanceTimersByTimeAsync(5100);
+
+    const btn = document.getElementById('copy');
+    expect(btn.textContent).toBe('copyError');
+    expect(btn.className).toContain('error');
+    expect(mockWriteText).not.toHaveBeenCalled();
+    vi.useRealTimers();
   });
 
   it('shows error state when no active tab is found', async () => {
@@ -276,7 +292,7 @@ describe('popup — multi-page mode', () => {
     await new Promise((r) => setTimeout(r, 100));
 
     expect(mockWriteText).toHaveBeenCalledWith('# Page Two');
-    expect(document.getElementById('copy-multi').textContent).toBe('copied');
+    expect(document.getElementById('copy-multi').textContent).toBe('copiedPartial(1,2)');
   });
 
   it('shows error when all tabs fail', async () => {
